@@ -1,0 +1,12 @@
+/*------------------------------------
+  Buttons
+------------------------------------*/
+
+.btn {
+  font-weight: $font-weight-normal;
+  cursor: pointer;
+}
+
+.btn-wide {
+  @include px-to-rem(min-width, $input-btn-min-width);
+}
