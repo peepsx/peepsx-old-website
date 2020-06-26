@@ -8,7 +8,7 @@
 /*------------------------------------
   Default Styles
 ------------------------------------*/
-@import url('//fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,700;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,700;1,700&display=swap');
 
 main {
     position: relative;
@@ -30,7 +30,8 @@ h6,
 .h4,
 .h5,
 .h6 {
-    font-weight: 400;
+    font-weight: 700;
+    font-family: Montserrat;
 }
 
 h1>a,
@@ -46,7 +47,8 @@ h6>a,
 .h5>a,
 .h6>a {
     color: #151b26;
-    font-weight: 400;
+    font-weight: 100;
+    font-family: Montserrat;
 }
 
 h1>a:hover,
@@ -81,10 +83,10 @@ h6.text-white>a,
 
 h6,
 .h6 {
-    font-weight: 500;
+    font-weight: 700;
 }
 
-figure {
+figure {        
     margin-bottom: 0;
 }
 
@@ -410,6 +412,26 @@ button:focus {
 /*------------------------------------
   Custom Css
 ------------------------------------*/
+.custom-link-desc {
+    margin: 20px;
+    position: relative;
+    left: 22px;
+}
+.modal-header .close {
+    margin: 0;
+}
+.modal-logo {
+    margin-bottom: 20px;
+}
+.modal-logo img {
+    max-width: 59px;
+}
+h2.modal-title {
+    margin: auto;
+}
+.modal-footer button.btn.btn-primary {
+    margin: auto;
+}
 
 
 /* .display-3 {
@@ -4523,6 +4545,19 @@ button:focus {
     background: #fff;
     border-top: 1px solid #e3e6f0;
 }
+.social-icon li {
+    list-style: none;
+    display: inline-block;
+    padding: 0 2%;
+    font-size: 15px;
+    border-right: 1px solid #646f79;
+}
+.social-icon {
+    text-align: center;
+}
+.social-icon li a {
+    color: #646f79 !important;
+}
 
 
 /*------------------------------------
@@ -4617,7 +4652,9 @@ button:focus {
         width: 100%;
     }
 }
-
+.desktop-nav li a {
+    color: #646f79;
+}
 @media (min-width: 992px) {
     .card-lg-2-count {
         -webkit-column-count: 2;
@@ -5154,7 +5191,7 @@ button:focus {
 
 .u-media-player {
     color: #151b26;
-    font-weight: 400;
+    font-weight: 100;
     transition: all 0.2s ease-in-out;
 }
 
@@ -6161,7 +6198,7 @@ button:focus {
     min-width: 15rem;
     color: #646f79;
     text-align: center;
-    font-weight: 400;
+    font-weight: 100;
     border: none;
     border-bottom: 2px solid #e3e6f0;
     border-radius: 0;
@@ -6582,7 +6619,7 @@ button:focus {
 
 @media (min-width: 576px) { /*commnet open by me */ 
     .position-absolute-bottom-0--sm {
-        position: absolute;
+        position: relative;
         right: 0;
         bottom: 0;
         left: 0;
@@ -6956,7 +6993,6 @@ button:focus {
 
 .font-weight-medium {
     font-weight: 700;
-    font-family: Montserrat;
 }
 
 
@@ -7351,13 +7387,13 @@ button:focus {
     src: url("/assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Alt\ Bold-webfont.woff2") format('woff2');
     src: url("/assets/fonts/Proxima-Nova-Bold.woff2") format('woff2');
     src: url("/assets/fonts/Proxima-Nova-Regular.woff2") format('woff2');
-    src: url("/assets/fonts/proximanova-light-webfont.woff2") format('woff2'); 
+    src: url("/assets/fonts/proximanova-light-webfont.woff2") format('woff2');
    
-}
-*/
+} */
+
 
 h1{
-    font-family: Montserrat !important;
+    font-family: Montserrat;
     font-weight: 700 !important;
 }
 p,li{
@@ -7368,3 +7404,116 @@ span{
     font-family: Montserrat;
     font-weight: 100 !important;
 }
+/*------------------------------------
+  Desktop-nav-bar
+------------------------------------*/
+ul.desktop-nav li {
+    padding: 5px;
+    border-radius: 2px;
+}
+ul.desktop-nav li.active {
+    background-color: rgb(71,116,182);
+}
+ul.desktop-nav li.active a {
+    color: #fff;
+}
+
+@media (max-width: 676px){
+    .desktop-nav {
+        display: none;
+    }
+}
+@media (max-width: 1200px){
+    ul.desktop-nav li {
+        padding: 4px;
+    }
+    ul.desktop-nav li a {
+        font-size: .8rem;
+    }
+}
+@media (max-width: 992px){
+    
+}
+
+/*------------------------------------
+  Mobile-nav-bar
+------------------------------------*/
+@media (min-width: 676px){
+    .openbtn{
+        display: none;
+    }
+   
+}
+@media (max-width: 575px) and (min-width: 429px){
+    .openbtn {
+        top: 0 !important;
+    }
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 111;
+    top: 0;
+    left: 0;
+    background-color: rgb(71,116,182);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    font-family: Montserrat;
+    font-weight: 600;
+  }
+  
+  .sidebar a {
+    padding: 8px 0;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidebar a:hover {
+    color: #646f79;
+  }
+  .sidebar a.active {
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    color: #b9c7d4;
+  }
+  
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  .openbtn {
+    position: absolute;
+    right: -26px;
+    top: 27px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: rgb(71,116,182);
+    color: white;
+    padding: 0px 8px;
+    border: none;
+    border-radius: 2px;
+  }
+  
+  .openbtn:hover {
+    background-color: rgb(61, 112, 185);
+  }
+  
+  #header {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+  }

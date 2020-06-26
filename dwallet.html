@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title id="platform_name" class='platform-name'></title>
+
+    <!-- Required Meta Tags Always Come First -->
+    <meta charset="utf-8">
+    <meta name="title" content="dWallet | Arisen Blockchain">
+
+    <meta name="description" content="dWallet is the official core wallet for Arisen's blockchain and the RIX cryptocurrency. dWallet is available for download on Windows, MacOS, Linux and Android.">
+
+    <meta name="keywords" content="dwallet, arisen wallet, rise wallet, rix wallet, rise, rix, arisen apps, dweb wallet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/assets/img/logos/arisen.png">
+
+    <!-- Google Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.css">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="assets/vendor/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendor/custombox/dist/custombox.min.css">
+    <link rel="stylesheet" href="assets/vendor/animate.css/animate.min.css">
+
+    <!-- CSS Space Template -->
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/sticky-footer.css">
+</head>
+
+<body>
+        <div id="mySidebar" class="sidebar">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                        <a href="https://peepsx.com/peeros.html">PeerOS</a>
+                        <a href="https://peepsid.com">PeepsID</a>
+                        <a href="https://dbrowser.com">dBrowser</a>
+                        <a  class="active" href="https://peepsx.com/dwallet.html">dWallet</a>
+                        <a href="https://dsocial.network">dSocial</a>
+                        <a href="https://dsearch.network">dSearch</a>
+                        <a href="https://dnames.network">dNames</a>
+                        <a href="https://dwebx.org">dWeb</a>
+                        <a href="https://arisen.network">Developers</a>
+    </div>
+    <!-- ========== HEADER ========== -->
+    <header id="header" class="u-header u-header--abs-top">
+        <div class="u-header__section bg-transparent border-0">
+            <div id="logoAndNav" class="container-fluid">
+                <!-- Nav -->
+                <nav class="navbar navbar-expand justify-content-between u-header__navbar py-3">
+                    <!-- Logo -->
+                    <div class="col-4 col-sm-2 mobile_menu">
+                        <a class="navbar-brand u-header__navbar-brand" href="index.html" aria-label="Distributed Webs">
+                            <center><img class="u-header__navbar-brand-default" height="50px" src="assets/img/logos/arisen.png" alt="arisen Logo"></center>
+                            <img class="u-header__navbar-brand-mobile" width="150px" src="assets/img/logos/arisen.png" alt="arisen Logo">
+                        </a>
+                    </div>
+                    <!-- End Logo -->
+                         <!-- Desktop Navbar -->
+                    <ul class="col-sm-7 nav navbar-nav desktop-nav" id="myNavbar">
+                        <li><a href="https://peepsx.com/peeros.html">PeerOS</a></li>
+                        <li><a href="https://peepsid.com">PeepsID</a></li>
+                        <li><a href="https://dbrowser.com">dBrowser</a></li>
+                        <li class="active"><a href="https://peepsx.com/dwallet.html">dWallet</a></li>
+                        <li><a href="https://dsocial.network">dSocial</a></li>
+                        <li><a href="https://dsearch.network">dSearch</a></li>
+                        <li><a href="https://dnames.network">dNames</a></li>
+                        <li><a href="https://dwebx.org">dWeb</a></li>
+                        <li><a href="https://arisen.network">Developers</a></li>
+                    </ul>
+                    <!-- Desktop End Navbar -->
+                   
+                    <!-- Button -->
+                    <div class="col-8 col-sm-3 text-right mobile_menu">
+                        <span id="rix-price" class="rsn-price"></span>
+                        <a class="btn btn-sm btn-primary" style='background-color: #8000FE; border-color: #8000FE' href="https://signup.arisen.network" role="button" target="_blank">
+                            Create Account
+                        </a>
+                        <button class="openbtn" onclick="openNav()">☰</button>
+                    </div>
+                    <!-- End Button -->
+                </nav>
+                <!-- End Nav -->
+            </div>
+        </div>
+    </header>
+    <!-- ========== END HEADER ========== -->
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main id="content" role="main">
+        <!-- Hero Section -->
+        <div class="bg-img-hero">
+            <div class="d-sm-flex align-items-sm-center height-100vh--sm">
+                <div class="container text-center space-3-top space-2-bottom space-3-bottom--lg">
+                    <div class="w-lg-60 text-center mx-lg-auto content_web">
+                        <!-- Title -->
+                        <div class="mb-4">
+                            <a>
+                                <img width='70px' height="70px" src="assets/img/logos/dwallet.png" alt="arisen Logo">
+                            </a>
+                            <h1 class="display-3 font-size-48--md-down font-weight-medium" id='platform_name_h1'></h1>
+                            <p class="lead" id='platform_name_onclick'>dWallet allows users to easily manage their Peeps account and their RIX earnings. dWallet is now available for download for MacOS, Windows, Linux, Android and iOS. Download for your operating system below.</p>
+                            <a class="btn btn-sm btn-primary " style='background-color: #8000FE; border-color: #8000FE' onclick="change()" id='download_for' href="https://github.com/arisenio/avote/releases" role="button" target="_blank">
+                                Download For </a>
+                        </div>
+                        <!-- End Title -->
+
+                        <!-- Countdown -->
+                        <div class="js-countdown row" data-end-date="2020/5/08" data-month-format="%m" data-days-format="%D" data-hours-format="%H" data-minutes-format="%M" data-seconds-format="%S">
+                            <div class="col-6 col-sm-3 mb-7 mb-sm-0">
+                                <span class="js-cd-days d-block display-4 text-primary font-weight-medium"></span>
+                                <span class="d-block h5 font-weight-normal mb-0">Days</span>
+                            </div>
+                            <div class="col-6 col-sm-3 mb-7 mb-sm-0">
+                                <span class="js-cd-hours d-block display-4 text-primary font-weight-medium"></span>
+                                <span class="d-block h5 font-weight-normal mb-0">Hours</span>
+                            </div>
+                            <div class="col-6 col-sm-3">
+                                <span class="js-cd-minutes d-block display-4 text-primary font-weight-medium"></span>
+                                <span class="d-block h5 font-weight-normal mb-0">Mins</span>
+                            </div>
+                            <div class="col-6 col-sm-3">
+                                <span class="js-cd-seconds d-block display-4 text-primary font-weight-medium"></span>
+                                <span class="d-block h5 font-weight-normal mb-0">Secs</span>
+                            </div>
+                        </div>
+                        <!-- End Countdown -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Hero Section -->
+    </main>
+    <!-- ========== END MAIN CONTENT ========== -->
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="position-absolute-bottom-0--sm">
+        <div class="footer_link" >
+            <ul class="navbar">
+                <li>
+                <a href="dwallet" target="_blank">dWallet</a>
+                </li>
+                <li>
+                <a href="https://github.com/arisenio/arisen" target="_blank">Source</a>
+                </li>
+                <li>
+                <a href=" https://explorer.arisen.network" target="_blank">Explore</a>
+                </li>
+                <li>
+                <a href="https://docs.arisen.network" target="_blank">Documentation</a>
+                </li>
+                <!-- <li style="border-right: none;">
+                <a href="https://github.com/arisen/@arisen/" target="_blank">AirDrop</a>
+                </li> -->
+                
+            </ul>
+            <div class="social-icon">
+                <li>
+                    <a href="https://facebook.com/arisenx" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/arisenx" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
+                </li>
+                <li style='border-right: none !important'>
+                    <a href="https://medium.com/arisenx" target="_blank" class="google"><i class="fab fa-medium"></i></a>
+                </li>
+            </div>
+        </div>
+        <div class="container text-center space-1">
+            <p class="small mb-0">&copy 2020 PeepsLabs. All rights reserved.</p>
+            <p class="powered-by small mb-0">
+                Powered by <a href="https://peepsx.com" target="_blank"><img src="assets/img/logos/arisen-icon.png" alt="peeps-logo"></a> made In <img src="assets/img/logos/american-flag.jpg" style="height: 27px; width: 50px" alt="">
+            </p>
+        </div>
+    </footer>
+    <!-- ========== END FOOTER ========== -->
+    <div class="u-sticky-footer">
+        <img src="assets/img/logos/arisen-icon.png" alt="dweb-logo">
+        <p>You can view this website as a dSite on the dWeb at <a href="https://peepsx.com">dweb://arisen.network</a></p>
+    </div>
+
+    <!-- ========== SECONDARY CONTENTS ========== -->
+    <!-- Subscribe for Updates Modal Window -->
+    <div id="subscribeForUpdatesModal" class="js-subscribe-for-updates u-modal-window" style="width: 500px;">
+        <!-- Modal Close Button -->
+        <button class="btn btn-sm btn-icon btn-text-secondary u-modal-window__close" type="button" onclick="Custombox.modal.close();">
+      <span class="fas fa-times"></span>
+    </button>
+        <!-- End Modal Close Button -->
+
+        <!-- Content -->
+        <div class="p-5">
+            <form class="js-validate">
+                <div class="max-width-18 mx-auto mb-2">
+                    <img class="img-fluid" src="assets/svg/components/subscribe-primary-icon.svg" alt="Image Description">
+                </div>
+
+                <!-- Title -->
+                <header class="text-center mb-5">
+                    <h2 class="h3 mb-0">Be in the cycle!</h2>
+                    <p>Get updated when there's any news about our services.</p>
+                </header>
+                <!-- End Title -->
+
+                <div class="js-form-message mb-3">
+                    <div class="js-focus-state input-group form">
+                        <div class="input-group-prepend form__prepend">
+                            <span class="input-group-text form__text">
+                <span class="fas fa-envelope form__text-inner"></span>
+                            </span>
+                        </div>
+                        <input type="email" class="form-control form__input" name="email" required placeholder="Your email" aria-label="Your email" data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-block btn-primary">Subscribe Me</button>
+            </form>
+        </div>
+        <!-- End Content -->
+    </div>
+    <!-- End Subscribe for Updates Modal Window -->
+    <!-- ========== END SECONDARY CONTENTS ========== -->
+
+    <!-- JS Global Compulsory -->
+    <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="assets/vendor/jquery-migrate/dist/jquery-migrate.min.js"></script>
+    <script src="assets/vendor/popper.js/dist/umd/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+    <!-- JS Implementing Plugins -->
+    <script src="assets/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="assets/vendor/custombox/dist/custombox.min.js"></script>
+    <script src="assets/vendor/custombox/dist/custombox.legacy.min.js"></script>
+    <script src="assets/vendor/jquery.countdown.min.js"></script>
+
+    <!-- JS Space -->
+    <script src="assets/js/hs.core.js"></script>
+    <script src="assets/js/components/hs.validation.js"></script>
+    <script src="assets/js/helpers/hs.focus-state.js"></script>
+    <script src="assets/js/components/hs.modal-window.js"></script>
+    <script src="assets/js/components/hs.show-animation.js"></script>
+    <script src="assets/js/components/hs.countdown.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.1/axios.min.js"></script>
+
+    <!-- JS Plugins Init. -->
+    <script>
+                // slide Nav bar from left
+        function openNav() {
+             document.getElementById("mySidebar").style.width = "250px";
+            //  document.getElementById("header").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            //  document.getElementById("header").style.marginLeft= "0";
+        }
+        // slide Nav bar from left end
+        function change() {
+            let txt = document.getElementById('download_for');
+            if(txt.innerHTML.indexOf('Linux') !== -1) {
+                txt.href = 'https://github.com/ArisenIO/dWallet-desktop/releases/download/1.1.2/linux-dWallet-1.1.2-x86_64.AppImage'
+            } else if(txt.innerHTML.indexOf('Mac') !== -1) {
+                txt.href = 'https://github.com/ArisenIO/dWallet-desktop/releases/download/1.1.2/mac-dWallet-1.1.2.dmg'
+            } else  if(txt.innerHTML.indexOf('Win') !== -1) {
+                txt.href = 'https://github.com/ArisenIO/dWallet-desktop/releases/download/1.1.2/win-dWallet-1.1.2.exe'
+            }
+            setTimeout(function() {
+                    txt.innerHTML = "Get Free RIX"
+                    txt.href = 'https://join.dpeeps.com'
+                }, 2000)
+            document.getElementById('platform_name_onclick').innerHTML = "Using dWallet is easy. Install dWallet and simply login with one of your Arisen private keys or use a program like PeepsID to automatically login" || "dWallet is the official wallet for Arisen's blockchain and the RIX cryptocurrency . dWallet is available on Windows, Linux, MacOS and Android."
+            document.getElementById('platform_name_h1').innerHTML = "Thanks for downloading dWallet." || `dWallet For ${navigator.platform}`
+            document.getElementById('download_for').onclick = function () {
+                    document.getElementById("download_for").innerHTML = txt.innerHTML;
+                    document.getElementById("download_for").href= txt.href;
+            }
+        }
+
+        if(navigator.platform.indexOf('Linux') !== -1) {
+            document.getElementById('download_for').innerHTML = `Download For LinuxOS`
+            document.getElementById('platform_name').innerHTML = `dWallet For LinuxOS`
+            document.getElementById('platform_name_h1').innerHTML = `dWallet For LinuxOS`
+        } else if(navigator.platform.indexOf('Mac') !== -1) {
+            document.getElementById('download_for').innerHTML = `Download For MacOS`
+            document.getElementById('platform_name').innerHTML = `dWallet For MacOS`
+            document.getElementById('platform_name_h1').innerHTML = `dWallet For MacOS`
+        } else if(navigator.platform.indexOf('Win') !== -1) {
+            document.getElementById('download_for').innerHTML = `Download For Windows`
+            document.getElementById('platform_name').innerHTML = `dWallet For Windows`
+            document.getElementById('platform_name_h1').innerHTML = `dWallet For Windows`
+        }
+        // document.getElementById('download_for').innerHTML = `Download For ${navigator.platform}`
+        // document.getElementById('platform_name').innerHTML = `dWallet For ${navigator.platform}`
+        // document.getElementById('platform_name_h1').innerHTML = `dWallet For ${navigator.platform}`
+         axios.get('https://nv6khovry9.execute-api.us-east-1.amazonaws.com/dev/rsn_price_from_bts')
+            .then(function (response) {
+            document.getElementById('rix-price').innerHTML = `RIX Price : $ ${parseFloat(response.data.data.USD.price).toFixed(4)}`;
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
+        
+        $(document).on('ready', function() {
+            // initialization of form validation5J48igM86SKws2P1f74NTw2kLeLGegjJGRnHPAAQQaK83e4h3Jg
+            $.HSCore.components.HSValidation.init('.js-validate', {
+                rules: {
+                    confirmPassword: {
+                        equalTo: '#password'
+                    }
+                }
+            });
+
+            // initialization of forms
+            $.HSCore.helpers.HSFocusState.init();
+
+            // initialization of autonomous popups
+            $.HSCore.components.HSModalWindow.init('[data-modal-target]', '.js-subscribe-for-updates', {
+                autonomous: true
+            });
+
+            // initialization of show animations
+            $.HSCore.components.HSShowAnimation.init('.js-animation-link');
+
+            // initialization of countdowns
+            var countdowns = $.HSCore.components.HSCountdown.init('.js-countdown', {
+                yearsElSelector: '.js-cd-years',
+                daysElSelector: '.js-cd-days',
+                hoursElSelector: '.js-cd-hours',
+                minutesElSelector: '.js-cd-minutes',
+                secondsElSelector: '.js-cd-seconds'
+            });
+            let count = Date.now()
+            if(count > 1588879800000) {
+                jQuery(".js-countdown").hide();
+            }  
+        });
+    </script>
+</body>
+
+</html>

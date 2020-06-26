@@ -19,3 +19,30 @@ body {
   /* Set the fixed height of the footer here */
   height: 72px;
 }
+
+.u-sticky-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 72px;
+  text-align: center;
+  background-color: #fff;
+}
+.u-sticky-footer img{
+  max-width: 35px;
+  position: absolute;
+  left: 20px;
+}
+.u-sticky-footer p {
+  max-width: 60%;
+  margin: auto;
+}
+
+.powered-by img{
+  max-width: 25px;
+  max-height: 20px;
+}
+.u-sticky-footer a {
+  color: #646f79;
+}
