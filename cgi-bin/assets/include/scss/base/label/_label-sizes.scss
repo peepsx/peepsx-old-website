@@ -1,9 +1,0 @@
-/*------------------------------------
-  Label Sizes
-------------------------------------*/
-
-/* Small */
-.u-label--sm {
-	@include px-to-rem(font-size, $label-font-size-sm);
-	@include px-to-rem(padding, $label-padding-sm);
-}
