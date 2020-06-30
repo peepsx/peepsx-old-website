@@ -14,7 +14,10 @@ main {
     position: relative;
 }
 
-p {
+p,a {
+    color: #646f79;
+}
+a:hover {
     color: #646f79;
 }
 
