@@ -7520,3 +7520,58 @@ ul.desktop-nav li.active a {
     .sidebar {padding-top: 15px;}
     .sidebar a {font-size: 18px;}
   }
+
+  /* ----Contact Form -----*/
+  .custom-form {
+    padding: 30px;
+}
+.custom-form .btn {
+    display: block;
+    margin: auto;
+}
+  .fname,.lname,.add1,.add2,.city,.state,.zip,.country,.phone,.email {
+    position: relative;
+    margin-bottom: 2em;
+  }
+  .custom-contact-us {
+    padding: 3rem 0;
+  }
+  .up-lable label {
+    position: absolute;
+    top: -24px;
+  }
+  .two-lables {
+    display: flex;
+  }
+  .fname,.lname,.add1,.add2,.phone,.email {
+    width: 50%;
+}
+.fname input,.lname input,.city input,.state input,.zip input,.country input,.phone input,.email input,.add1 input,.add2 input {
+    width: 96%;
+}
+.city,.state,.zip,.country {
+    width: 25%;
+}
+.pull-area-up {
+    position: relative;
+    top: -7rem;
+    background-color: #fff;
+    padding: 3rem 2rem;
+}
+.radio-inline input {
+    margin: 5px;
+}
+label.radio-inline {
+    margin: 5px 10px;
+}
+.payment p {
+    font-weight: 600 !important;
+}
+.payment {
+    border: 1px solid #646f79;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow: 1px 3px #646f79;
+}
+  
+  /* ----Contact Form End -----*/
