@@ -14,7 +14,10 @@ main {
     position: relative;
 }
 
-p {
+p,a {
+    color: #646f79;
+}
+a:hover {
     color: #646f79;
 }
 
@@ -7398,11 +7401,11 @@ h1{
 }
 p,li{
     font-family: Montserrat;
-    font-weight: 501 !important;
+    font-weight: 500 !important;
 }
 span{
     font-family: Montserrat;
-    font-weight: 501 !important;
+    font-weight: 502 !important;
 }
 /*------------------------------------
   Desktop-nav-bar
