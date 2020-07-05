@@ -7568,10 +7568,8 @@ label.radio-inline {
     font-weight: 600 !important;
 }
 .payment {
-    border: 1px solid #646f79;
     border-radius: 50%;
     padding: 20px;
-    box-shadow: 1px 3px #646f79;
 }
   
   /* ----Contact Form End -----*/
