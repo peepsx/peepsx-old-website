@@ -445,7 +445,34 @@ h2.modal-title {
 .modal-footer button.btn.btn-primary {
     margin: auto;
 }
-
+.modal-backdrop {
+    z-index: 0;
+}
+#myModal{
+z-index: 111;
+}
+.modal-header button {
+    width: 50px;
+    height: 50px;
+    line-height: 5px;
+}
+.modal-header .modal-title {
+    position: relative;
+    right: 63px;
+    top: 5px;
+}
+.flex-container.payment-optn {
+    display: flex;
+    justify-content: center;
+}
+.payment-optn button {
+    max-width: 150px;
+}
+div#paypal-button-container {
+    max-width: 150px;
+    margin: 15px;
+    margin-left: 0;
+}
 
 /* .display-3 {
     font-size: 4rem !important
@@ -7978,11 +8005,12 @@ ul.desktop-nav li.active a {
 /* ----Contact Form -----*/
 .custom-form {
     padding: 30px;
+    margin: auto;
 }
 
 .custom-form .btn {
     display: block;
-    margin: auto;
+    margin: 10px 0;
 }
 
 .fname,
@@ -8005,7 +8033,11 @@ ul.desktop-nav li.active a {
 
 .up-lable label {
     position: absolute;
-    top: -24px;
+    top: -34px;
+    left: 4px;
+}
+.payment label {
+    display: inline-block;
 }
 
 .two-lables {
@@ -8060,10 +8092,7 @@ label.radio-inline {
     font-weight: 600 !important;
 }
 
-.payment {
-    border-radius: 50%;
-    padding: 20px;
-}
+
 
 /* ----Contact Form End -----*/
 
