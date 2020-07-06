@@ -31,6 +31,10 @@
 
     <!-- CSS Space Template -->
     <link rel="stylesheet" href="assets/css/theme.css">
+    <!-- -----------------stripe payment js ----------- -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="stripe.js"></script>
+
 </head>
 
 <body>
@@ -136,18 +140,14 @@
                                         <p>Payment Options</p>
                                         <div class="flex-container payment-optn">
                                             <div id="paypal-button-container"></div>
-                                        <!-- Trigger the modal with a button -->
-                                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                                        data-target="#myModal">Open Modal</button>
+                                            <!-- Trigger the modal with a button -->
+                                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                                                data-target="#myModal">Pay With Card</button>
                                         </div>
                                         <button class="btn btn-sm btn-primary ">Become a Peeps Member</button>
                                     </div>
 
-                                    
-
-                                    
-
-                                    <!-- Modal -->
+                                    <!-- Modal stripe payment-->
                                     <div class="modal fade" id="myModal" role="dialog">
                                         <div class="modal-dialog">
 
@@ -156,11 +156,12 @@
                                                 <div class="modal-header">
                                                     <button type="button" class="close"
                                                         data-dismiss="modal">&times;</button>
-                                                    <h4 class="modal-title">Pay with card</h4>
+                                                    <h4 class="modal-title">Payment Details</h4>
                                                 </div>
                                                 <div class="modal-body">
 
-                                                    <form>
+
+                                                    <!-- <form>
                                                         <label>
                                                             <span>Name</span>
                                                             <input name="cardholder-name" class="field"
@@ -188,8 +189,30 @@
                                                                     class="token"></span>
                                                             </div>
                                                         </div>
-                                                    </form>
+                                                    </form> -->
 
+                                                    <form>
+                                                        <label>
+                                                          <input name="cardholder-name" class="field is-empty" placeholder="Jane Doe" />
+                                                          <span><span>Name</span></span>
+                                                        </label>
+                                                        <label>
+                                                          <input class="field is-empty" type="tel" placeholder="(123) 456-7890" />
+                                                          <span><span>Phone number</span></span>
+                                                        </label>
+                                                        <label>
+                                                          <div id="card-element" class="field is-empty"></div>
+                                                          <span><span>Credit or debit card</span></span>
+                                                        </label>
+                                                        <button type="submit">Pay $25</button>
+                                                        <div class="outcome">
+                                                          <div class="error" role="alert"></div>
+                                                          <div class="success">
+                                                            Success! Your Stripe token is <span class="token"></span>
+                                                          </div>
+                                                        </div>
+                                                      </form>
+                                                      
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default"
@@ -200,7 +223,7 @@
                                         </div>
                                     </div>
 
-
+                                    <!-- ------------------------------modal stripe ends---------- -->
                                 </div>
                             </form>
                             <a class="btn btn-sm btn-primary " href="https://dsocial.network" role="button"
@@ -377,7 +400,6 @@
 
     <script
         src="https://www.paypal.com/sdk/js?client-id=AeSkIlCgK1bjX6UPr8w9fDyMD7F5WsuzJWWbgiNSyEi2BnU43V6j5kJbRCK87gk6uYi8HfpyYyCKAzK_&currency=USD"></script>
-    <script src="https://js.stripe.com/v3/"></script>
 
     <!-- JS Plugins Init. -->
     <script>
@@ -461,73 +483,6 @@
 
 
         }).render('#paypal-button-container');
-    </script>
-
-
-    <script>
-        var stripe = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
-        var elements = stripe.elements({
-            fonts: [
-                {
-                    family: 'Open Sans',
-                    weight: 400,
-                    src: 'local("Open Sans"), local("OpenSans"), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2) format("woff2")',
-                    unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215',
-                },
-            ]
-        });
-
-        var card = elements.create('card', {
-            hidePostalCode: true,
-            style: {
-                base: {
-                    iconColor: '#F99A52',
-                    color: '#32315E',
-                    lineHeight: '48px',
-                    fontWeight: 400,
-                    fontFamily: '"Open Sans", "Helvetica Neue", "Helvetica", sans-serif',
-                    fontSize: '15px',
-
-                    '::placeholder': {
-                        color: '#CFD7DF',
-                    }
-                },
-            }
-        });
-        card.mount('#card-element');
-
-        function setOutcome(result) {
-            var successElement = document.querySelector('.success');
-            var errorElement = document.querySelector('.error');
-            successElement.classList.remove('visible');
-            errorElement.classList.remove('visible');
-
-            if (result.token) {
-                // Use the token to create a charge or a customer
-                // https://stripe.com/docs/charges
-                successElement.querySelector('.token').textContent = result.token.id;
-                successElement.classList.add('visible');
-            } else if (result.error) {
-                errorElement.textContent = result.error.message;
-                errorElement.classList.add('visible');
-            }
-        }
-
-        card.on('change', function (event) {
-            setOutcome(event);
-        });
-
-        document.querySelector('form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            var form = document.querySelector('form');
-            var extraDetails = {
-                name: form.querySelector('input[name=cardholder-name]').value,
-                address_zip: form.querySelector('input[name=address-zip]').value
-            };
-            stripe.createToken(card, extraDetails).then(setOutcome);
-        });
-
-
     </script>
 
     <!-- =============modal start========== -->
