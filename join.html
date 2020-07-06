@@ -10,7 +10,8 @@
 
     <meta name="description" content="Please fill out the form below to become a PeepsPatriot.">
 
-    <meta name="keywords" content="peeps, peepssx, dsocial, dbrowser, dweb, arisen, dwallet, peeros, dsearch, dride, dbuy">
+    <meta name="keywords"
+        content="peeps, peepssx, dsocial, dbrowser, dweb, arisen, dwallet, peeros, dsearch, dride, dbuy">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -43,8 +44,10 @@
                     <!-- Logo -->
                     <div class="col-4 col-sm-6 mobile_menu">
                         <a class="navbar-brand u-header__navbar-brand" href="index.html" aria-label="Distributed Webs">
-                            <center><img class="u-header__navbar-brand-default" height="80px" src="assets/img/logos/peepsx.png" alt="arisen Logo"></center>
-                            <img class="u-header__navbar-brand-mobile" width="150px" src="assets/img/logos/peepsx.png" alt="arisen Logo">
+                            <center><img class="u-header__navbar-brand-default" height="80px"
+                                    src="assets/img/logos/peepsx.png" alt="arisen Logo"></center>
+                            <img class="u-header__navbar-brand-mobile" width="150px" src="assets/img/logos/peepsx.png"
+                                alt="arisen Logo">
                         </a>
                     </div>
                     <!-- End Logo -->
@@ -77,14 +80,14 @@
                             <p class="lead">
                                 Please fill out the form below to become a PeepsPatriot
                             </p>
-                            <form class="custom-form" action="" method="" >
+                            <form class="custom-form" action="" method="">
                                 <div class="form-elements">
                                     <div class="two-lables">
                                         <div class="fname up-lable">
                                             <label>First Name*:</label>
                                             <input type="text" maxlength="200" name="First Name" required>
                                         </div>
-                                        
+
                                         <div class="lname up-lable">
                                             <label>Last Name*:</label>
                                             <input type="text" maxlength="200" name="Last Name" required>
@@ -95,7 +98,7 @@
                                             <label>Address1*:</label>
                                             <input type="text" maxlength="200" name="Address1" required>
                                         </div>
-                                    
+
                                         <div class="add2 up-lable">
                                             <label>Address2*:</label>
                                             <input type="text" maxlength="200" name="Address2" required>
@@ -139,19 +142,84 @@
                                         </label>
                                         <button class="btn btn-sm btn-primary ">Become a Peeps Member</button>
                                     </div>
+
+                                    <div id="paypal-button-container"></div>
+
+                                    <!-- Trigger the modal with a button -->
+                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                        data-target="#myModal">Open Modal</button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="myModal" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close"
+                                                        data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Modal Header</h4>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <form>
+                                                        <label>
+                                                            <span>Name</span>
+                                                            <input name="cardholder-name" class="field"
+                                                                placeholder="Jane Doe" />
+                                                        </label>
+                                                        <label>
+                                                            <span>Phone</span>
+                                                            <input class="field" placeholder="(123) 456-7890"
+                                                                type="tel" />
+                                                        </label>
+                                                        <label>
+                                                            <span>ZIP code</span>
+                                                            <input name="address-zip" class="field"
+                                                                placeholder="94110" />
+                                                        </label>
+                                                        <label>
+                                                            <span>Card</span>
+                                                            <div id="card-element" class="field"></div>
+                                                        </label>
+                                                        <button type="submit">Pay $25</button>
+                                                        <div class="outcome">
+                                                            <div class="error"></div>
+                                                            <div class="success">
+                                                                Success! Your Stripe token is <span
+                                                                    class="token"></span>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </form>
-                            <a class="btn btn-sm btn-primary " href="https://dsocial.network" role="button" target="_blank">
+                            <a class="btn btn-sm btn-primary " href="https://dsocial.network" role="button"
+                                target="_blank">
                                 Check Our dSocial </a>
 
-                            <a class="btn btn-sm btn-primary" href="https://peepsx.com/go" role="button" target="_blank">
+                            <a class="btn btn-sm btn-primary" href="https://peepsx.com/go" role="button"
+                                target="_blank">
                                 More Peeps Products </a>
 
                         </div>
                         <!-- End Title -->
 
                         <!-- Countdown -->
-                        <div class="js-countdown row" data-end-date="2020/5/08" data-month-format="%m" data-days-format="%D" data-hours-format="%H" data-minutes-format="%M" data-seconds-format="%S">
+                        <div class="js-countdown row" data-end-date="2020/5/08" data-month-format="%m"
+                            data-days-format="%D" data-hours-format="%H" data-minutes-format="%M"
+                            data-seconds-format="%S">
                             <div class="col-6 col-sm-3 mb-7 mb-sm-0">
                                 <span class="js-cd-days d-block display-4 text-primary font-weight-medium"></span>
                                 <span class="d-block h5 font-weight-normal mb-0">Days</span>
@@ -180,25 +248,25 @@
 
     <!-- ========== FOOTER ========== -->
     <footer class="position-absolute-bottom-0--sm">
-        <div class="footer_link" >
+        <div class="footer_link">
             <ul class="navbar">
                 <li>
-                <a href="https://dbrowser.com" target="_blank">dBrowser</a>
+                    <a href="https://dbrowser.com" target="_blank">dBrowser</a>
                 </li>
                 <li>
                     <a href="https://github.com/peepsx" target="_blank">Source</a>
                 </li>
                 <li>
-                <a href="https://dsocial.network" target="_blank">dSocial</a>
+                    <a href="https://dsocial.network" target="_blank">dSocial</a>
                 </li>
                 <li>
-                <a href="https://peepsid.com" target="_blank">PeepsID</a>
+                    <a href="https://peepsid.com" target="_blank">PeepsID</a>
                 </li>
                 <li>
-                <a href="https://arisen.network" target="_blank">Arisen</a>
+                    <a href="https://arisen.network" target="_blank">Arisen</a>
                 </li>
                 <li>
-                <a href="https://dwebs.io" target="_blank">dWeb</a>
+                    <a href="https://dwebs.io" target="_blank">dWeb</a>
                 </li>
                 <!-- <li style="border-right: none;">
                 <a href="https://github.com/arisenio/arisenid-desktop/releases" target="_blank">Download ArisenID</a>
@@ -206,26 +274,32 @@
                 <!-- <li style="border-right: none;">
                 <a href="https://github.com/arisen/@arisen/" target="_blank">AirDrop</a>
                 </li> -->
-               
+
             </ul>
             <div class="social-icon">
                 <li>
-                    <a href="https://facebook.com/peepsology" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://facebook.com/peepsology" target="_blank" class="facebook"><i
+                            class="fab fa-facebook"></i></a>
                 </li>
                 <li>
-                    <a href="https://twitter.com/peepsology" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://twitter.com/peepsology" target="_blank" class="twitter"><i
+                            class="fab fa-twitter"></i></a>
                 </li>
                 <li>
-                    <a href="https://medium.com/@peepsology" target="_blank" class="google"><i class="fab fa-medium"></i></a>
+                    <a href="https://medium.com/@peepsology" target="_blank" class="google"><i
+                            class="fab fa-medium"></i></a>
                 </li>
                 <li>
-                    <a href="https://instagram.com/peepsology" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://instagram.com/peepsology" target="_blank" class="instagram"><i
+                            class="fab fa-instagram"></i></a>
                 </li>
                 <li>
-                    <a href="https://youtube.com/channel/UCoknUFNMUF9ciA_WGmm8pxQ" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://youtube.com/channel/UCoknUFNMUF9ciA_WGmm8pxQ" target="_blank" class="youtube"><i
+                            class="fab fa-youtube"></i></a>
                 </li>
                 <li style='border-right: none !important'>
-                    <a href="https://t.me/peepsology" target="_blank" class="telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="https://t.me/peepsology" target="_blank" class="telegram"><i
+                            class="fab fa-telegram"></i></a>
                 </li>
             </div>
         </div>
@@ -239,16 +313,18 @@
     <!-- Subscribe for Updates Modal Window -->
     <div id="subscribeForUpdatesModal" class="js-subscribe-for-updates u-modal-window" style="width: 500px;">
         <!-- Modal Close Button -->
-        <button class="btn btn-sm btn-icon btn-text-secondary u-modal-window__close" type="button" onclick="Custombox.modal.close();">
-      <span class="fas fa-times"></span>
-    </button>
+        <button class="btn btn-sm btn-icon btn-text-secondary u-modal-window__close" type="button"
+            onclick="Custombox.modal.close();">
+            <span class="fas fa-times"></span>
+        </button>
         <!-- End Modal Close Button -->
 
         <!-- Content -->
         <div class="p-5">
             <form class="js-validate">
                 <div class="max-width-18 mx-auto mb-2">
-                    <img class="img-fluid" src="assets/svg/components/subscribe-primary-icon.svg" alt="Image Description">
+                    <img class="img-fluid" src="assets/svg/components/subscribe-primary-icon.svg"
+                        alt="Image Description">
                 </div>
 
                 <!-- Title -->
@@ -262,10 +338,13 @@
                     <div class="js-focus-state input-group form">
                         <div class="input-group-prepend form__prepend">
                             <span class="input-group-text form__text">
-                <span class="fas fa-envelope form__text-inner"></span>
+                                <span class="fas fa-envelope form__text-inner"></span>
                             </span>
                         </div>
-                        <input type="email" class="form-control form__input" name="email" required placeholder="Your email" aria-label="Your email" data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
+                        <input type="email" class="form-control form__input" name="email" required
+                            placeholder="Your email" aria-label="Your email"
+                            data-msg="Please enter a valid email address." data-error-class="u-has-error"
+                            data-success-class="u-has-success">
                     </div>
                 </div>
 
@@ -298,18 +377,22 @@
     <script src="assets/js/components/hs.countdown.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.1/axios.min.js"></script>
 
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=AeSkIlCgK1bjX6UPr8w9fDyMD7F5WsuzJWWbgiNSyEi2BnU43V6j5kJbRCK87gk6uYi8HfpyYyCKAzK_&currency=USD"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+
     <!-- JS Plugins Init. -->
     <script>
 
-         axios.get('https://nv6khovry9.execute-api.us-east-1.amazonaws.com/dev/rsn_price_from_bts')
+        axios.get('https://nv6khovry9.execute-api.us-east-1.amazonaws.com/dev/rsn_price_from_bts')
             .then(function (response) {
-            document.getElementById('rix-price').innerHTML = `RIX Price : $ ${parseFloat(response.data.data.USD.price).toFixed(4)}`;
+                document.getElementById('rix-price').innerHTML = `RIX Price : $ ${parseFloat(response.data.data.USD.price).toFixed(4)}`;
             })
             .catch(function (error) {
                 console.log(error)
             });
-        
-        $(document).on('ready', function() {
+
+        $(document).on('ready', function () {
             // initialization of form validation5J48igM86SKws2P1f74NTw2kLeLGegjJGRnHPAAQQaK83e4h3Jg
             $.HSCore.components.HSValidation.init('.js-validate', {
                 rules: {
@@ -339,11 +422,146 @@
                 secondsElSelector: '.js-cd-seconds'
             });
             let count = Date.now()
-            if(count > 1588879800000) {
+            if (count > 1588879800000) {
                 jQuery(".js-countdown").hide();
-            }  
+            }
         });
     </script>
+    <script>
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+
+            // Set up the transaction
+            createOrder: function (data, actions) {
+                console.log('=========createorder====', data, actions)
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '5.00'
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                    console.log('=======daetails', details.payer.name, data, actions)
+                    // Show a success message to the buyer
+                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                });
+            },
+
+            //button style
+            style: {
+                layout: 'horizontal',
+                color: 'blue',
+                shape: 'pill',
+                label: 'pay',
+                height: 40
+            }
+
+
+        }).render('#paypal-button-container');
+    </script>
+
+
+    <script>
+        var stripe = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+        var elements = stripe.elements({
+            fonts: [
+                {
+                    family: 'Open Sans',
+                    weight: 400,
+                    src: 'local("Open Sans"), local("OpenSans"), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2) format("woff2")',
+                    unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215',
+                },
+            ]
+        });
+
+        var card = elements.create('card', {
+            hidePostalCode: true,
+            style: {
+                base: {
+                    iconColor: '#F99A52',
+                    color: '#32315E',
+                    lineHeight: '48px',
+                    fontWeight: 400,
+                    fontFamily: '"Open Sans", "Helvetica Neue", "Helvetica", sans-serif',
+                    fontSize: '15px',
+
+                    '::placeholder': {
+                        color: '#CFD7DF',
+                    }
+                },
+            }
+        });
+        card.mount('#card-element');
+
+        function setOutcome(result) {
+            var successElement = document.querySelector('.success');
+            var errorElement = document.querySelector('.error');
+            successElement.classList.remove('visible');
+            errorElement.classList.remove('visible');
+
+            if (result.token) {
+                // Use the token to create a charge or a customer
+                // https://stripe.com/docs/charges
+                successElement.querySelector('.token').textContent = result.token.id;
+                successElement.classList.add('visible');
+            } else if (result.error) {
+                errorElement.textContent = result.error.message;
+                errorElement.classList.add('visible');
+            }
+        }
+
+        card.on('change', function (event) {
+            setOutcome(event);
+        });
+
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var form = document.querySelector('form');
+            var extraDetails = {
+                name: form.querySelector('input[name=cardholder-name]').value,
+                address_zip: form.querySelector('input[name=address-zip]').value
+            };
+            stripe.createToken(card, extraDetails).then(setOutcome);
+        });
+
+
+    </script>
+
+    <!-- =============modal start========== -->
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <!-- ============modal ends=========== -->
+
 </body>
 
 </html>
