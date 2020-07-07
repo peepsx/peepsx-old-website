@@ -150,8 +150,7 @@
                                         <div class="flex-container payment-optn">
                                             <div id="paypal-button-container"></div>
                                             <!-- Trigger the modal with a button -->
-                                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                                                data-target="#myModal">Pay With Card</button>
+                                            <button type="button" class="btn btn-sm btn-primary" onclick="paymentstripe()">Pay With Card</button>
                                         </div>
                                         <button class="btn btn-sm btn-primary ">Become a Peeps Member</button>
                                     </div>
@@ -510,6 +509,44 @@
         }
     </script>
     <!-- ============modal ends=========== -->
+    <script>
+         // Replace with your own publishable key: https://dashboard.stripe.com/test/apikeys
+      var PUBLISHABLE_KEY = "pk_test_51H0hOeJ5nSY4c5DA2cfV1Tv6LG1GbKx2wLunxpRedM2MngFTgty1g1tEJQXhwSe28lgDsHcfl0Xy6OiVGvr1sSYs00Ovbdmo9v";
+      // Replace with the domain you want your users to be redirected back to after payment
+      var DOMAIN = 'https://peepsx.com';
+      // Replace with a Price for your own product (created either in the Stripe Dashboard or with the API)
+      // You can also supply a SKU or Plan ID for 
+      var PRICE_ID = "price_1H2HYTJ5nSY4c5DA0RolNgVJ";
+      var stripe = Stripe(PUBLISHABLE_KEY);
+
+
+        // Handle any errors from Checkout
+        var handleResult = function(result) {
+            if(result){
+                console.log('========resultsssssss',result)
+            }
+                if (result.error) {
+                var displayError = document.getElementById("error-message");
+                displayError.textContent = result.error.message;
+                }
+            };
+        function paymentstripe(){
+            console.log("cllll");
+            stripe
+          .redirectToCheckout({
+            mode: 'payment',
+            lineItems: [{ price: PRICE_ID, quantity: 1 }],
+            successUrl:
+              DOMAIN + "./success.html?session_id={CHECKOUT_SESSION_ID}",
+            cancelUrl: DOMAIN + "/canceled.html",
+            mode: 'subscription',
+          })
+          .then(handleResult);
+        }
+
+        
+    
+    </script>
 
 </body>
 
