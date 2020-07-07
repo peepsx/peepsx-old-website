@@ -462,7 +462,7 @@ h2.modal-title {
 
 .modal-header .modal-title {
     position: relative;
-    right: 63px;
+    left: -170px;
     top: 5px;
 }
 
@@ -8109,7 +8109,7 @@ label.radio-inline {
 
 
 
-form {
+/* form {
     width: 480px;
     margin: 20px 0;
 }
@@ -8213,7 +8213,7 @@ button:active {
     font-weight: 500;
     font-size: 13px;
 }
-
+ */
 
 /* stripe payment style ends */
 
@@ -8324,7 +8324,7 @@ form {
     background: transparent;
     font-weight: 300;
     border: 0;
-    color: white;
+    color: #aaa;
     outline: none;
     cursor: text;
     display: block;
@@ -8397,4 +8397,3 @@ form {
     font-weight: 500;
     font-size: 15px;
   }
-  

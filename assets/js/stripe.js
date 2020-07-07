@@ -1,34 +1,41 @@
-var stripe = Stripe('pk_test_51H0hOeJ5nSY4c5DA2cfV1Tv6LG1GbKx2wLunxpRedM2MngFTgty1g1tEJQXhwSe28lgDsHcfl0Xy6OiVGvr1sSYs00Ovbdmo9v');
-var elements = stripe.elements();
 
-var card = elements.create('card', {
-  iconStyle: 'solid',
-  style: {
-    base: {
-      iconColor: '#8898AA',
-      color: 'white',
-      lineHeight: '36px',
-      fontWeight: 300,
-      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-      fontSize: '19px',
 
-      '::placeholder': {
-        color: '#8898AA',
-      },
-    },
-    invalid: {
-      iconColor: '#e85746',
-      color: '#e85746',
-    }
-  },
-  classes: {
-    focus: 'is-focused',
-    empty: 'is-empty',
-  },
-});
-card.mount('#card-element');
 
-var inputs = document.querySelectorAll('input.field');
+function payment(){
+  // var data= document.getElementById("payment-form").submit();
+  console.log('==================')
+  var stripe = Stripe('pk_test_51H0hOeJ5nSY4c5DA2cfV1Tv6LG1GbKx2wLunxpRedM2MngFTgty1g1tEJQXhwSe28lgDsHcfl0Xy6OiVGvr1sSYs00Ovbdmo9v');
+// var elements = stripe.elements();
+
+// var card = elements.create('card', {
+//   iconStyle: 'solid',
+//   style: {
+//     base: {
+//       iconColor: '#8898AA',
+//       color: 'black',
+//       lineHeight: '36px',
+//       fontWeight: 300,
+//       fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+//       fontSize: '19px',
+
+//       '::placeholder': {
+//         color: '#8898AA',
+//       },
+//     },
+//     invalid: {
+//       iconColor: '#e85746',
+//       color: '#e85746',
+//     }
+//   },
+//   classes: {
+//     focus: 'is-focused',
+//     empty: 'is-empty',
+//   },
+// });
+// card.mount('#card-element');
+
+var inputs = document.getElementById('payment-form').data-stripe;
+console.log('======inputs',inputs)
 Array.prototype.forEach.call(inputs, function(input) {
   input.addEventListener('focus', function() {
     input.classList.add('is-focused');
@@ -74,3 +81,5 @@ document.querySelector('form').addEventListener('submit', function(e) {
   };
   stripe.createToken(card, extraDetails).then(setOutcome);
 });
+
+}
