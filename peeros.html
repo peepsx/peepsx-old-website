@@ -57,17 +57,30 @@
                     <!-- Logo -->
                     <div class="col-4 col-sm-2 mobile_menu">
                         <a class="navbar-brand u-header__navbar-brand" href="index.html" aria-label="Distributed Webs">
-                            <center><img class="u-header__navbar-brand-default" height="50px" src="assets/img/logos/arisen.png" alt="arisen Logo"></center>
-                            <img class="u-header__navbar-brand-mobile" width="150px" src="assets/img/logos/arisen.png" alt="arisen Logo">
+                            <center><img class="u-header__navbar-brand-default" height="80px" src="assets/img/logos/peepsx.png" alt="arisen Logo"></center>
+                            <img class="u-header__navbar-brand-mobile" width="150px" src="assets/img/logos/peepsx.png" alt="arisen Logo">
                         </a>
                     </div>
                     <!-- End Logo -->
+                    <!-- Desktop Navbar -->
+                    <ul class="col-sm-7 nav navbar-nav desktop-nav" id="myNavbar">
+                        <li class="active"><a href="https://peepsx.com/peeros.html">PeerOS</a></li>
+                        <li><a href="https://peepsid.com">PeepsID</a></li>
+                        <li><a href="https://dbrowser.com">dBrowser</a></li>
+                        <li><a href="https://peepsx.com/dwallet.html">dWallet</a></li>
+                        <li><a href="https://dsocial.network">dSocial</a></li>
+                        <li><a href="https://dsearch.network">dSearch</a></li>
+                        <li><a href="https://dnames.network">dNames</a></li>
+                        <li><a href="https://dwebx.org">dWeb</a></li>
+                        <li><a href="https://arisen.network">Developers</a></li>
+                    </ul>
+                    <!-- Desktop End Navbar -->
 
                     <!-- Button -->
                     <div class="col-8 col-sm-3 text-right mobile_menu">
                         <a href="https://wallet.bitshares.org/#/asset/RSN" target="_blank"><span id="rix-price" class="rsn-price"></span></a>
                         <a class="btn btn-sm btn-primary" style="background-color: rgb(71,116,182); border-color: rgb(71,116,182);" href="https://signup.peepsid.com" role="button" target="_blank">
-                            Signup For dSocial
+                            Create PeepsID
                         </a>
                         <button class="openbtn" onclick="openNav()">☰</button>
                     </div>
@@ -92,17 +105,17 @@
                             <p class="lead">
                                 We're completely re-imagining the operating system, the file system and rethinking how people communicate with each other. That effort is bringing to life the world's first dApp store and an operating system where people can finally remove that piece of tape from their web cam. Launching January 2021.
                             </p>
-                            <a class="btn btn-sm btn-primary" style="background-color: rgb(71,116,182); border-color: rgb(71,116,182);" href="https://github.com/peepsx/peeros-whitepaper;" id='os_download' role="button" target="_blank">
-                                Read the PeerOS Whitepaper </a>
+                            <!-- <a class="btn btn-sm btn-primary" style="background-color: rgb(71,116,182); border-color: rgb(71,116,182);" href="https://github.com/peepsx/peeros-whitepaper;" id='os_download' role="button" target="_blank">
+                                Read PeerOS Whitepaper </a> -->
 
-                            <!-- <a class="btn btn-sm btn-primary" style="background-color: rgb(71,116,182); border-color: rgb(71,116,182);" href="fund.html" role="button" target="_blank">
-                                Help Fund The Revolution </a> -->
+                            <a class="btn btn-sm btn-primary" style="background-color: rgb(71,116,182); border-color: rgb(71,116,182);" href="https://github.com/peepsx/peeros-whitepaper" role="button" target="_blank">
+                                Read PeerOS Whitepaper  </a>
 
                         </div>
                         <!-- End Title -->
 
                         <!-- Countdown -->
-                        <div class="js-countdown row" data-end-date="2020/5/08" data-month-format="%m" data-days-format="%D" data-hours-format="%H" data-minutes-format="%M" data-seconds-format="%S">
+                        <!-- <div class="js-countdown row" data-end-date="2020/5/08" data-month-format="%m" data-days-format="%D" data-hours-format="%H" data-minutes-format="%M" data-seconds-format="%S">
                             <div class="col-6 col-sm-3 mb-7 mb-sm-0">
                                 <span class="js-cd-days d-block display-4 text-primary font-weight-medium"></span>
                                 <span class="d-block h5 font-weight-normal mb-0">Days</span>
@@ -119,7 +132,7 @@
                                 <span class="js-cd-seconds d-block display-4 text-primary font-weight-medium"></span>
                                 <span class="d-block h5 font-weight-normal mb-0">Secs</span>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- End Countdown -->
                     </div>
                 </div>
@@ -132,7 +145,7 @@
     <!-- ========== FOOTER ========== -->
     <footer class="position-absolute-bottom-0--sm">
         <div class="footer_link" >
-            <ul class="navbar">
+            <!-- <ul class="navbar">
                 <li>
                 <a href="https://peepsx.network" target="_blank">Peeps</a>
                 </li>
@@ -148,14 +161,14 @@
                 <li>
                 <a href="https://dsocial.network" target="_blank">dSocial</a>
                 </li>
-                <!-- <li style="border-right: none;">
+                <li style="border-right: none;">
                 <a href="https://github.com/arisenio/arisenid-desktop/releases" target="_blank">Download ArisenID</a>
-                </li> -->
-                <!-- <li style="border-right: none;">
+                </li>
+                <li style="border-right: none;">
                 <a href="https://github.com/arisen/@arisen/" target="_blank">AirDrop</a>
-                </li> -->
+                </li>
                 
-            </ul>
+            </ul> -->
             <div class="social-icon">
                 <li>
                     <a href="https://facebook.com/peepsology" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
@@ -285,7 +298,7 @@
         
          axios.get('https://nv6khovry9.execute-api.us-east-1.amazonaws.com/dev/rsn_price_from_bts')
             .then(function (response) {
-            document.getElementById('rix-price').innerHTML = `RIX Price : $ ${parseFloat(response.data.data.USD.price).toFixed(4)}`;
+            document.getElementById('rix-price').innerHTML = `RIX: $ ${parseFloat(response.data.data.USD.price).toFixed(4)}`;
             })
             .catch(function (error) {
                 console.log(error)

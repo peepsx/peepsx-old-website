@@ -30,9 +30,22 @@
 
     <!-- CSS Space Template -->
     <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/sticky-footer.css">
 </head>
 
 <body>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <a href="https://peepsx.com/peeros.html">PeerOS</a>
+            <a href="https://peepsid.com">PeepsID</a>
+            <a href="https://dbrowser.com">dBrowser</a>
+            <a href="https://peepsx.com/dwallet.html">dWallet</a>
+            <a href="https://dsocial.network">dSocial</a>
+            <a href="https://dsearch.network">dSearch</a>
+            <a href="https://dnames.network">dNames</a>
+            <a href="https://dwebx.org">dWeb</a>
+            <a href="https://arisen.network">Developers</a>
+</div>
 
     <!-- ========== HEADER ========== -->
     <header id="header" class="u-header u-header--abs-top">
@@ -41,20 +54,34 @@
                 <!-- Nav -->
                 <nav class="navbar navbar-expand justify-content-between u-header__navbar py-3">
                     <!-- Logo -->
-                    <div class="col-4 col-sm-6 mobile_menu">
+                    <div class="col-4 col-sm-2 mobile_menu">
                         <a class="navbar-brand u-header__navbar-brand" href="index.html" aria-label="Distributed Webs">
                             <center><img class="u-header__navbar-brand-default" height="80px" src="assets/img/logos/peepsx.png" alt="arisen Logo"></center>
                             <img class="u-header__navbar-brand-mobile" width="150px" src="assets/img/logos/peepsx.png" alt="arisen Logo">
                         </a>
                     </div>
                     <!-- End Logo -->
+                    <!-- Desktop Navbar -->
+                    <ul class="col-sm-7 nav navbar-nav desktop-nav" id="myNavbar">
+                        <li><a href="https://peepsx.com/peeros.html">PeerOS</a></li>
+                        <li><a href="https://peepsid.com">PeepsID</a></li>
+                        <li><a href="https://dbrowser.com">dBrowser</a></li>
+                        <li><a href="https://peepsx.com/dwallet.html">dWallet</a></li>
+                        <li><a href="https://dsocial.network">dSocial</a></li>
+                        <li><a href="https://dsearch.network">dSearch</a></li>
+                        <li><a href="https://dnames.network">dNames</a></li>
+                        <li><a href="https://dwebx.org">dWeb</a></li>
+                        <li><a href="https://arisen.network">Developers</a></li>
+                    </ul>
+                    <!-- Desktop End Navbar -->
 
                     <!-- Button -->
-                    <div class="col-8 col-sm-6 text-right mobile_menu">
+                    <div class="col-8 col-sm-3 text-right mobile_menu">
                         <a href="https://wallet.bitshares.org/#/asset/RSN" target="_blank"><span id="rix-price" class="rsn-price"></span></a>
                         <a class="btn btn-sm btn-primary" style="background-color: rgb(71,116,182); border-color: rgb(71,116,182);" href="https://signup.peepsid.com" role="button" target="_blank">
                             Create PeepsID
                         </a>
+                        <button class="openbtn" onclick="openNav()">☰</button>
                     </div>
                     <!-- End Button -->
                 </nav>
@@ -117,7 +144,7 @@
     <!-- ========== FOOTER ========== -->
     <footer class="position-absolute-bottom-0--sm">
         <div class="footer_link" >
-            <ul class="navbar">
+            <!-- <ul class="navbar">
                 <li>
                 <a href="https://dbrowser.com" target="_blank">dBrowser</a>
                 </li>
@@ -136,14 +163,14 @@
                 <li>
                 <a href="https://dwebs.io" target="_blank">dWeb</a>
                 </li>
-                <!-- <li style="border-right: none;">
+                <li style="border-right: none;">
                 <a href="https://github.com/arisenio/arisenid-desktop/releases" target="_blank">Download ArisenID</a>
-                </li> -->
-                <!-- <li style="border-right: none;">
+                </li>
+                <li style="border-right: none;">
                 <a href="https://github.com/arisen/@arisen/" target="_blank">AirDrop</a>
-                </li> -->
+                </li>
                 
-            </ul>
+            </ul> -->
             <div class="social-icon">
                 <li>
                     <a href="https://facebook.com/peepsology" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
@@ -167,9 +194,16 @@
         </div>
         <div class="container text-center space-1">
             <p class="small mb-0">&copy 2020 Peeps. All rights reserved.</p>
+            <p class="powered-by small mb-0">
+                Powered by <a href="https://peepsx.com" target="_blank"><img src="assets/img/logos/arisen-icon.png" alt="peeps-logo"></a> and Made in <img src="assets/img/logos/american-flag.jpg" style="height: 27px; width: 50px" alt="">
+            </p>
         </div>
     </footer>
     <!-- ========== END FOOTER ========== -->
+    <div class="u-sticky-footer">
+        <img src="assets/img/logos/dweb-logo.png" alt="dweb-logo">
+        <p>You can view this website as a dSite on the dWeb at <a href="https://peepsx.com">dweb://peepsx.com </a></p>
+    </div>
 
     <!-- ========== SECONDARY CONTENTS ========== -->
     <!-- Subscribe for Updates Modal Window -->
@@ -236,10 +270,21 @@
 
     <!-- JS Plugins Init. -->
     <script>
+         // slide Nav bar from left
+         function openNav() {
+             document.getElementById("mySidebar").style.width = "250px";
+            //  document.getElementById("header").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            //  document.getElementById("header").style.marginLeft= "0";
+        }
+        // slide Nav bar from left end
 
          axios.get('https://nv6khovry9.execute-api.us-east-1.amazonaws.com/dev/rsn_price_from_bts')
             .then(function (response) {
-            document.getElementById('rix-price').innerHTML = `RIX Price : $ ${parseFloat(response.data.data.USD.price).toFixed(4)}`;
+            document.getElementById('rix-price').innerHTML = `RIX: $ ${parseFloat(response.data.data.USD.price).toFixed(4)}`;
             })
             .catch(function (error) {
                 console.log(error)
