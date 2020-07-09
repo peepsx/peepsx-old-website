@@ -136,7 +136,7 @@
                                     <div class="two-lables">
                                         <div class="phone up-lable">
                                             <!-- <label>Phone Number*:</label> -->
-                                            <input type="tel" maxlength="11" name="phone number" placeholder="phone"
+                                            <input type="tel" maxlength="11" name="phone number" placeholder="Phone"
                                                 required>
                                         </div>
                                         <div class="email up-lable">
@@ -150,10 +150,11 @@
                                         <div class="flex-container payment-optn">
                                             <div id="paypal-button-container"></div>
                                             <!-- Trigger the modal with a button -->
-                                            <button type="button" class="btn btn-sm btn-primary"
+                                            <button type="button" class="btn btn-sm btn-blue"
                                                 onclick="paymentstripe()">Pay With Card</button>
+                                                
                                         </div>
-                                        <button class="btn btn-sm btn-primary ">Become a Peeps Member</button>
+                                        <button class="btn btn-sm btn-blue">Become a Peeps Member</button>
                                     </div>
 
 
@@ -401,7 +402,7 @@
 
         axios.get('https://nv6khovry9.execute-api.us-east-1.amazonaws.com/dev/rsn_price_from_bts')
             .then(function (response) {
-                document.getElementById('rix-price').innerHTML = `RIX Price : $ ${parseFloat(response.data.data.USD.price).toFixed(4)}`;
+                document.getElementById('rix-price').innerHTML = `RIX: $ ${parseFloat(response.data.data.USD.price).toFixed(4)}`;
             })
             .catch(function (error) {
                 console.log(error)
