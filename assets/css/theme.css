@@ -462,8 +462,7 @@ h2.modal-title {
 
 .modal-header .modal-title {
     position: relative;
-    left: -170px;
-    top: 5px;
+    right: 34%;
 }
 
 .flex-container.payment-optn {
@@ -8055,8 +8054,10 @@ ul.desktop-nav li.active a {
     left: 4px;
 }
 
-.payment label {
-    display: inline-block;
+
+.pay-btn button {
+    position: relative;
+    left: 38%;
 }
 
 .two-lables {
@@ -8275,7 +8276,7 @@ button:active {
 }
 
 .modal-dialog {
-    max-width: 800px;
+    max-width: 900px;
 }
 
 
@@ -8283,98 +8284,70 @@ button:active {
 
 form {
     width: 480px;
-    margin: 20px auto;
+    margin: 20px 0;
   }
   
   label {
-    height: 35px;
     position: relative;
-    color: #8798AB;
-    display: block;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    color: #6A7C94;
+    font-weight: 400;
+    height: 48px;
+    line-height: 48px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
   }
   
   label > span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    font-weight: 300;
-    line-height: 32px;
-    color: #8798AB;
-    border-bottom: 1px solid #586A82;
-    transition: border-bottom-color 200ms ease-in-out;
-    cursor: text;
-    pointer-events: none;
-  }
-  
-  label > span span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform-origin: 0% 50%;
-    transition: transform 200ms ease-in-out;
-    cursor: text;
-  }
-  
-  label .field.is-focused + span span,
-  label .field:not(.is-empty) + span span {
-    transform: scale(0.68) translateY(-36px);
-    cursor: default;
-  }
-  
-  label .field.is-focused + span {
-    border-bottom-color: #34D08C;
+    width: 115px;
   }
   
   .field {
-    background: transparent;
-    font-weight: 300;
-    border: 0;
-    color: #aaa;
+    background: white;
+    box-sizing: border-box;
+    font-weight: 400;
+    border: 1px solid #CFD7DF;
+    border-radius: 24px;
+    color: #32315E;
     outline: none;
+    flex: 1;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 20px;
     cursor: text;
-    display: block;
-    width: 100%;
-    line-height: 32px;
-    padding-bottom: 3px;
-    transition: opacity 200ms ease-in-out;
   }
   
-  .field::-webkit-input-placeholder { color: #8898AA; }
-  .field::-moz-placeholder { color: #8898AA; }
+  .field::-webkit-input-placeholder { color: #CFD7DF; }
+  .field::-moz-placeholder { color: #CFD7DF; }
   
-  /* IE doesn't show placeholders when empty+focused */
-   .field:-ms-input-placeholder { color: #424770; }
-  
-  .field.is-empty:not(.is-focused) {
-    opacity: 0;
+  .field:focus,
+  .field.StripeElement--focus {
+    border-color: #F99A52;
   }
   
   button {
     float: left;
     display: block;
-    background: #34D08C;
+    background-image: linear-gradient(-180deg, #F8B563 0%, #F99A52 100%);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.10), inset 0 -1px 0 0 #E57C45;
     color: white;
-    border-radius: 2px;
+    border-radius: 24px;
     border: 0;
     margin-top: 20px;
-    font-size: 19px;
-    font-weight: 400;
+    font-size: 17px;
+    font-weight: 500;
     width: 100%;
-    height: 47px;
-    line-height: 45px;
+    height: 48px;
+    line-height: 48px;
     outline: none;
   }
   
   button:focus {
-    background: #24B47E;
+    background: #EF8C41;
   }
   
   button:active {
-    background: #159570;
+    background: #E17422;
   }
   
   .outcome {
@@ -8387,7 +8360,7 @@ form {
   
   .success, .error {
     display: none;
-    font-size: 15px;
+    font-size: 13px;
   }
   
   .success.visible, .error.visible {
@@ -8399,11 +8372,11 @@ form {
   }
   
   .success {
-    color: #34D08C;
+    color: #F8B563;
   }
   
   .success .token {
     font-weight: 500;
-    font-size: 15px;
+    font-size: 13px;
   }
   
