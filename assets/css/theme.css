@@ -462,8 +462,7 @@ h2.modal-title {
 
 .modal-header .modal-title {
     position: relative;
-    left: -170px;
-    top: 5px;
+    right: 34%;
 }
 
 .flex-container.payment-optn {
@@ -8056,7 +8055,11 @@ ul.desktop-nav li.active a {
 }
 
 .payment label {
-    display: inline-block;
+    /* display: inline-block; */
+}
+.pay-btn button {
+    position: relative;
+    left: 38%;
 }
 
 .two-lables {
