@@ -84,7 +84,7 @@
                             <p class="lead">
                                 Please fill out the form below to become a PeepsPatriot
                             </p>
-                            <form class="custom-form" action="" method="">
+                            <form class="custom-form">
                                 <div class="form-elements">
                                     <div class="two-lables">
                                         <div class="fname up-lable">
@@ -157,63 +157,10 @@
                                                 data-target="#myModal">Pay With Card</button>
 
 
-                                            <!-- Modal stripe payment-->
-                                            <div class="modal fade" id="myModal" role="dialog">
-                                                <div class="modal-dialog">
 
-                                                    <!-- Modal content-->
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close"
-                                                                data-dismiss="modal">&times;</button>
-                                                            <h4 class="modal-title">Payment Details</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form>
-                                                                <!-- <label>
-                                                                    <span>Name</span>
-                                                                    <input name="cardholder-name" class="field"
-                                                                        placeholder="Jane Doe" />
-                                                                </label>
-                                                                <label>
-                                                                    <span>Phone</span>
-                                                                    <input class="field" placeholder="(123) 456-7890"
-                                                                        type="tel" />
-                                                                </label>
-                                                                <label>
-                                                                    <span>ZIP code</span>
-                                                                    <input name="address-zip" class="field"
-                                                                        placeholder="94110" />
-                                                                </label> -->
-                                                                <label>
-                                                                    <span>Card</span>
-                                                                    <div id="card-element" class="field"></div>
-                                                                </label>
-                                                                <div class="pay-btn"><button type="submit">Pay $25</button></div>
-                                                                <div class="outcome">
-                                                                    <div class="error"></div>
-                                                                    <div class="success">
-                                                                        Success! Your Stripe token is <span
-                                                                            class="token"></span>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-
-
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default"
-                                                                data-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                            <!-- ------------------------------modal stripe ends---------- -->
 
                                         </div>
-                                        <button class="btn btn-sm btn-blue">Become a Peeps Member</button>
+                                        <button class="btn btn-sm btn-blue" onclick="peepsmember()">Become a Peeps Member</button>
                                     </div>
 
 
@@ -231,28 +178,49 @@
                         </div>
                         <!-- End Title -->
 
-                        <!-- Countdown -->
-                        <div class="js-countdown row" data-end-date="2020/5/08" data-month-format="%m"
-                            data-days-format="%D" data-hours-format="%H" data-minutes-format="%M"
-                            data-seconds-format="%S">
-                            <div class="col-6 col-sm-3 mb-7 mb-sm-0">
-                                <span class="js-cd-days d-block display-4 text-primary font-weight-medium"></span>
-                                <span class="d-block h5 font-weight-normal mb-0">Days</span>
-                            </div>
-                            <div class="col-6 col-sm-3 mb-7 mb-sm-0">
-                                <span class="js-cd-hours d-block display-4 text-primary font-weight-medium"></span>
-                                <span class="d-block h5 font-weight-normal mb-0">Hours</span>
-                            </div>
-                            <div class="col-6 col-sm-3">
-                                <span class="js-cd-minutes d-block display-4 text-primary font-weight-medium"></span>
-                                <span class="d-block h5 font-weight-normal mb-0">Mins</span>
-                            </div>
-                            <div class="col-6 col-sm-3">
-                                <span class="js-cd-seconds d-block display-4 text-primary font-weight-medium"></span>
-                                <span class="d-block h5 font-weight-normal mb-0">Secs</span>
+                        <!-- Modal stripe payment-->
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Payment Details</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="stripeform">
+                                            <label>
+                                                <span>Name</span>
+                                                <input name="cardholder-name" class="field" placeholder="Jane Doe" />
+                                            </label>
+                                            <label>
+                                                <span>Card</span>
+                                                <div id="card-element" class="field"></div>
+                                            </label>
+                                            <div class="pay-btn"><button type="submit">Pay
+                                                    $5</button></div>
+                                            <!-- <div class="outcome">
+                                                <div class="error"></div>
+                                                <div class="success">
+                                                    Success! Your Stripe token is <span
+                                                        class="token"></span>
+                                                </div>
+                                            </div> -->
+                                        </form>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                        <!-- End Countdown -->
+
+                        <!-- ------------------------------modal stripe ends---------- -->
                     </div>
                 </div>
             </div>
@@ -544,22 +512,23 @@
         });
         card.mount('#card-element');
 
-        function setOutcome(result) {
-            var successElement = document.querySelector('.success');
-            var errorElement = document.querySelector('.error');
-            successElement.classList.remove('visible');
-            errorElement.classList.remove('visible');
+        function setOutcome(result, name) {
+            console.log("token ====== ")
+            // var successElement = document.querySelector('.success');
+            // var errorElement = document.querySelector('.error');
+            // successElement.classList.remove('visible');
+            // errorElement.classList.remove('visible');
 
             if (result.token) {
-                console.log("token",result.token);
-                this.payment(result.token)
+                console.log("token", result.token, name);
+                this.payment(result.token, name)
                 // Use the token to create a charge or a customer
                 // https://stripe.com/docs/charges
-                successElement.querySelector('.token').textContent = result.token.id;
-                successElement.classList.add('visible');
+                //successElement.querySelector('.token').textContent = result.token.id;
+                //successElement.classList.add('visible');
             } else if (result.error) {
-                errorElement.textContent = result.error.message;
-                errorElement.classList.add('visible');
+                //   errorElement.textContent = result.error.message;
+                // errorElement.classList.add('visible');
             }
         }
 
@@ -567,27 +536,34 @@
             setOutcome(event);
         });
 
-        document.querySelector('form').addEventListener('submit', function (e) {
+        document.querySelector('.stripeform').addEventListener('submit', function (e) {
             e.preventDefault();
-            var form = document.querySelector('form');
+            var form = document.querySelector('.stripeform');
             var extraDetails = {
                 name: form.querySelector('input[name=cardholder-name]').value,
-                address_zip: form.querySelector('input[name=address-zip]').value
+                //   address_zip: form.querySelector('input[name=address-zip]').value
             };
-            stripe.createToken(card, extraDetails).then(setOutcome);
+            stripe.createToken(card, extraDetails).then(result => {
+                setOutcome(result, extraDetails.name)
+            });
         });
 
-        async function payment(token) {
-            const config = {
-                method: 'POST',
-                url: 'http://localhost:3000/users/payment',
-                headers: { 'Token': 'token' }
+        async function payment(token, name) {
+            let object = {
+                "name": name,
+                "token": token.id
             }
-            let res = await axios(config)
-            console.log('==========', res)
+            axios.post('http://localhost:3000/users/payment', object).then((result) => {
+                console.log("api response ====== ", result.data, result.status)
+            }).catch((error) => {
+                console.log(error)
+            })
         }
-
-
+    </script>
+    <script>
+        function peepsmember(){
+            
+        }
     </script>
 </body>
 

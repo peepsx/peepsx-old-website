@@ -8057,7 +8057,7 @@ ul.desktop-nav li.active a {
 
 .pay-btn button {
     position: relative;
-    left: 38%;
+    left: 14%;
 }
 
 .two-lables {
@@ -8276,14 +8276,14 @@ button:active {
 }
 
 .modal-dialog {
-    max-width: 900px;
+    max-width: 950px;
 }
 
 
 /* -----------------------new stripe payment style---------- */
 
 form {
-    width: 480px;
+    width: 521px;
     margin: 20px 0;
   }
   
@@ -8299,7 +8299,7 @@ form {
   }
   
   label > span {
-    width: 115px;
+    width: 140px;
   }
   
   .field {
