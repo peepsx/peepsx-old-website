@@ -551,6 +551,8 @@
             errorElement.classList.remove('visible');
 
             if (result.token) {
+                console.log("token",result.token);
+                this.payment(result.token)
                 // Use the token to create a charge or a customer
                 // https://stripe.com/docs/charges
                 successElement.querySelector('.token').textContent = result.token.id;
@@ -575,12 +577,14 @@
             stripe.createToken(card, extraDetails).then(setOutcome);
         });
 
-        function payment() {
-            axios.post('http://localhost:3000/users/payment').then((res) => {
-                if (res) {
-                    console.log('===========', res)
-                }
-            })
+        async function payment(token) {
+            const config = {
+                method: 'POST',
+                url: 'http://localhost:3000/users/payment',
+                headers: { 'Token': 'token' }
+            }
+            let res = await axios(config)
+            console.log('==========', res)
         }
 
 
