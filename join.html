@@ -150,9 +150,68 @@
                                         <div class="flex-container payment-optn">
                                             <div id="paypal-button-container"></div>
                                             <!-- Trigger the modal with a button -->
-                                            <button type="button" class="btn btn-sm btn-blue"
-                                                onclick="paymentstripe()">Pay With Card</button>
-                                                
+                                            <!-- <button type="button" class="btn btn-sm btn-blue"
+                                                onclick="paymentstripe()">Pay With Card</button> -->
+                                            <!-- Trigger the modal with a button -->
+                                            <button type="button" class="btn btn-sm btn-blue" data-toggle="modal"
+                                                data-target="#myModal">Pay With Card</button>
+
+
+                                            <!-- Modal stripe payment-->
+                                            <div class="modal fade" id="myModal" role="dialog">
+                                                <div class="modal-dialog">
+
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close"
+                                                                data-dismiss="modal">&times;</button>
+                                                            <h4 class="modal-title">Payment Details</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form>
+                                                                <label>
+                                                                    <span>Name</span>
+                                                                    <input name="cardholder-name" class="field"
+                                                                        placeholder="Jane Doe" />
+                                                                </label>
+                                                                <label>
+                                                                    <span>Phone</span>
+                                                                    <input class="field" placeholder="(123) 456-7890"
+                                                                        type="tel" />
+                                                                </label>
+                                                                <label>
+                                                                    <span>ZIP code</span>
+                                                                    <input name="address-zip" class="field"
+                                                                        placeholder="94110" />
+                                                                </label>
+                                                                <label>
+                                                                    <span>Card</span>
+                                                                    <div id="card-element" class="field"></div>
+                                                                </label>
+                                                                <button type="submit">Pay $25</button>
+                                                                <div class="outcome">
+                                                                    <div class="error"></div>
+                                                                    <div class="success">
+                                                                        Success! Your Stripe token is <span
+                                                                            class="token"></span>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <!-- ------------------------------modal stripe ends---------- -->
+
                                         </div>
                                         <button class="btn btn-sm btn-blue">Become a Peeps Member</button>
                                     </div>
@@ -311,65 +370,6 @@
     </div>
     <!-- End Subscribe for Updates Modal Window -->
 
-    <!-- Modal stripe payment-->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Payment Details</h4>
-                </div>
-                <div class="modal-body">
-
-                    <form action="" method="post" id="payment-form">
-                        <div class="card-errors"></div>
-
-                        <div class="form-row">
-                            <label>
-                                <spam><span>Card number</span></spam>
-                                <input type="text" size="16" data-stripe="number">
-                            </label>
-                        </div>
-
-                        <div class="form-row">
-                            <label>
-                                <spam><span>Expiration (MM/YY)</span></spam>
-                                <input type="text" size="2" data-stripe="exp_month">
-                                <spam><span> / </span></spam>
-                                <input type="text" size="2" data-stripe="exp_year">
-                            </label>
-                        </div>
-
-                        <div class="form-row">
-                            <label>
-                                <spam><span>CVC</span></spam>
-                                <input type="text" size="4" data-stripe="cvc">
-                            </label>
-                        </div>
-
-                        <div class="form-row">
-                            <label>
-                                <spam><span>Billing Zip</span></spam>
-                                <input type="text" size="6" data-stripe="address_zip">
-                            </label>
-                        </div>
-
-                        <input type="button" class="btn btn-block btn-primary" value="Submit" onclick="payment()">
-                    </form>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- ------------------------------modal stripe ends---------- -->
 
     <!-- ========== END SECONDARY CONTENTS ========== -->
 
@@ -480,7 +480,7 @@
 
         }).render('#paypal-button-container');
     </script>
-    <script src="assets/js/stripe.js"></script>
+    <!-- <script src="assets/js/stripe.js"></script> -->
 
     <!-- =============modal start========== -->
     <script>
@@ -511,45 +511,80 @@
         }
     </script>
     <!-- ============modal ends=========== -->
+
     <script>
-        // Replace with your own publishable key: https://dashboard.stripe.com/test/apikeys
-        var PUBLISHABLE_KEY = "pk_test_51H0hOeJ5nSY4c5DA2cfV1Tv6LG1GbKx2wLunxpRedM2MngFTgty1g1tEJQXhwSe28lgDsHcfl0Xy6OiVGvr1sSYs00Ovbdmo9v";
-        // Replace with the domain you want your users to be redirected back to after payment
-        var DOMAIN = 'https://peepsx.com';
-        // Replace with a Price for your own product (created either in the Stripe Dashboard or with the API)
-        // You can also supply a SKU or Plan ID for 
-        var PRICE_ID = "price_1H2HYTJ5nSY4c5DA0RolNgVJ";
-        var stripe = Stripe(PUBLISHABLE_KEY);
+        var stripe = Stripe('pk_test_51H0hOeJ5nSY4c5DA2cfV1Tv6LG1GbKx2wLunxpRedM2MngFTgty1g1tEJQXhwSe28lgDsHcfl0Xy6OiVGvr1sSYs00Ovbdmo9v');
+        var elements = stripe.elements({
+            fonts: [
+                {
+                    family: 'Open Sans',
+                    weight: 400,
+                    src: 'local("Open Sans"), local("OpenSans"), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2) format("woff2")',
+                    unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215',
+                },
+            ]
+        });
 
+        var card = elements.create('card', {
+            hidePostalCode: true,
+            style: {
+                base: {
+                    iconColor: '#F99A52',
+                    color: 'blac',
+                    lineHeight: '48px',
+                    fontWeight: 400,
+                    fontFamily: '"Open Sans", "Helvetica Neue", "Helvetica", sans-serif',
+                    fontSize: '15px',
 
-        // Handle any errors from Checkout
-        var handleResult = function (result) {
-            console.log('========resultsssssss')
-            console.log('========resultsssssss', result)
-            if (result.error) {
-                console.log('========resultsssssss========if')
-                var displayError = document.getElementById("error-message");
-                displayError.textContent = result.error.message;
+                    '::placeholder': {
+                        color: 'red',
+                    }
+                },
             }
-        };
-        function paymentstripe() {
-            console.log("cllll");
-            stripe
-                .redirectToCheckout({
-                    mode: 'payment',
-                    lineItems: [{ price: PRICE_ID, quantity: 1 }],
-                    successUrl:
-                        DOMAIN + "/success.html?session_id={CHECKOUT_SESSION_ID}",
-                    cancelUrl: DOMAIN + "/canceled.html",
-                    mode: 'subscription',
-                })
-                .then(handleResult);
+        });
+        card.mount('#card-element');
+
+        function setOutcome(result) {
+            var successElement = document.querySelector('.success');
+            var errorElement = document.querySelector('.error');
+            successElement.classList.remove('visible');
+            errorElement.classList.remove('visible');
+
+            if (result.token) {
+                // Use the token to create a charge or a customer
+                // https://stripe.com/docs/charges
+                successElement.querySelector('.token').textContent = result.token.id;
+                successElement.classList.add('visible');
+            } else if (result.error) {
+                errorElement.textContent = result.error.message;
+                errorElement.classList.add('visible');
+            }
+        }
+
+        card.on('change', function (event) {
+            setOutcome(event);
+        });
+
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var form = document.querySelector('form');
+            var extraDetails = {
+                name: form.querySelector('input[name=cardholder-name]').value,
+                address_zip: form.querySelector('input[name=address-zip]').value
+            };
+            stripe.createToken(card, extraDetails).then(setOutcome);
+        });
+
+        function payment() {
+            axios.post('http://localhost:3000/users/payment').then((res) => {
+                if (res) {
+                    console.log('===========', res)
+                }
+            })
         }
 
 
-
     </script>
-
 </body>
 
 </html>
