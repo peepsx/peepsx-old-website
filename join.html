@@ -125,7 +125,7 @@
                                     </div>
                                     <div class="zip up-lable">
                                         <!-- <label>Zip Code*:</label> -->
-                                        <input type="text" maxlength="10" name="Zip Code" placeholder="Zip Code"
+                                        <input type="number" maxlength="10" name="Zip Code" placeholder="Zip Code"
                                             id="zipcode" required>
                                     </div>
                                     <div class="country up-lable">
@@ -548,7 +548,7 @@
                 "name": name,
                 "token": token.id
             }
-            axios.post('http://localhost:3000/users/payment', object).then((result) => {
+            axios.post('http://payments.peepsx.com/users/payment', object).then((result) => {
                 console.log("api response ====== ", result.data.data.id, result.data.data.status)
                 let subscriptionid = localStorage.setItem("stripedata", result.data.data.id)
                 let subscriptionstaus = localStorage.setItem("stripestatus", result.data.data.status)
@@ -577,7 +577,7 @@
             let phoneno = document.getElementById('phoneno').value
             let email = document.getElementById('email').value
             if (subsid == "" || subsid == null && subsstatus == "" || subsstatus == null && paymenttype == "" || paymenttype == null) {
-                alert('Please comple your payment first')
+                alert('Please complete your payment first either by paypal or card')
             } else if (fname == "" || fname == null) {
                 alert('Enter first name')
             } else if (lname == "" || lname == null) {
@@ -615,7 +615,7 @@
                     "subscriptionId": subsid,
                     "subscriptionStatus": subsstatus
                 }
-                axios.post('http://localhost:3000/users/saveuser', objdata).then((response) => {
+                axios.post('http://payments.peepsx.com/users/saveuser', objdata).then((response) => {
                     console.log("api response ====== saveuser", response.data.message)
                     if (response) {
                         console.log(response.data)
