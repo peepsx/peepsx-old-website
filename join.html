@@ -233,8 +233,8 @@
             <!-- Modal content -->
             <div class="modal-content">
                 <span class="closeme" id="closesuccess" onclick="closemodalsecondmodal()">&times;</span>
-                <h3>Your payment is Successful.</h3>
-                <h4 >Your transectionID is </h4>
+                <h4>Your payment is Successful.</h4>
+                <p >Your subscriptionId is <span id="subId"></span> </p>
 
             </div>
 
@@ -516,6 +516,7 @@
             }
             axios.post('https://payments.peepsx.com/users/payment', object).then((result) => {
                 console.log("api response ====== ", result.data.data.id, result.data.data.status)
+                document.getElementById("subId").innerHTML = result.data.data.id
                 let subscriptionid = localStorage.setItem("stripedata", result.data.data.id)
                 let subscriptionstaus = localStorage.setItem("stripestatus", result.data.data.status)
                 let paymenttype = localStorage.setItem('paymentType', "Stripe")
