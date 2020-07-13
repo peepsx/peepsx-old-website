@@ -37,9 +37,7 @@
 
 </head>
 
-<body onload="showModal()">
-
-    <div id="loading"></div>
+<body>
 
     <!-- ========== HEADER ========== -->
     <header id="header" class="u-header u-header--abs-top">
@@ -127,7 +125,7 @@
                                     </div>
                                     <div class="zip up-lable">
                                         <!-- <label>Zip Code*:</label> -->
-                                        <input type="number" maxlength="10" name="Zip Code" placeholder="Zip Code"
+                                        <input type="text" maxlength="10" name="Zip Code" placeholder="Zip Code"
                                             id="zipcode" required>
                                     </div>
                                     <div class="country up-lable">
@@ -177,7 +175,7 @@
                         <!-- End Title -->
 
                         <!-- Modal stripe payment-->
-                        <div class="modal " id="myModal" role="dialog">
+                        <div class="modal fade" id="myModal" role="dialog">
                             <div class="modal-dialog">
 
                                 <!-- Modal content-->
@@ -219,30 +217,11 @@
                         </div>
 
                         <!-- ------------------------------modal stripe ends---------- -->
-
-
                     </div>
                 </div>
             </div>
         </div>
         <!-- End Hero Section -->
-
-        <!-- ------------------modal dialog for success payment-------------- -->
-        <div id="successmodel" class="modal" role="dialog">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span class="closeme" id="closesuccess" onclick="closemodalsecondmodal()">&times;</span>
-                <h3>Your payment is Successful.</h3>
-                <h4 >Your transectionID is </h4>
-
-            </div>
-
-        </div>
-
-
-        <!-- ------------------modal dialog for success payment-------------- -->
-
     </main>
     <!-- ========== END MAIN CONTENT ========== -->
 
@@ -309,6 +288,54 @@
     </footer>
     <!-- ========== END FOOTER ========== -->
 
+    <!-- ========== SECONDARY CONTENTS ========== -->
+    <!-- Subscribe for Updates Modal Window -->
+    <div id="subscribeForUpdatesModal" class="js-subscribe-for-updates u-modal-window" style="width: 500px;">
+        <!-- Modal Close Button -->
+        <button class="btn btn-sm btn-icon btn-text-secondary u-modal-window__close" type="button"
+            onclick="Custombox.modal.close();">
+            <span class="fas fa-times"></span>
+        </button>
+        <!-- End Modal Close Button -->
+
+        <!-- Content -->
+        <div class="p-5">
+            <form class="js-validate">
+                <div class="max-width-18 mx-auto mb-2">
+                    <img class="img-fluid" src="assets/svg/components/subscribe-primary-icon.svg"
+                        alt="Image Description">
+                </div>
+
+                <!-- Title -->
+                <header class="text-center mb-5">
+                    <h2 class="h3 mb-0">Be in the cycle!</h2>
+                    <p>Get updated when there's any news about our services.</p>
+                </header>
+                <!-- End Title -->
+
+                <div class="js-form-message mb-3">
+                    <div class="js-focus-state input-group form">
+                        <div class="input-group-prepend form__prepend">
+                            <span class="input-group-text form__text">
+                                <span class="fas fa-envelope form__text-inner"></span>
+                            </span>
+                        </div>
+                        <input type="email" class="form-control form__input" name="email" required
+                            placeholder="Your email" aria-label="Your email"
+                            data-msg="Please enter a valid email address." data-error-class="u-has-error"
+                            data-success-class="u-has-success">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-block btn-primary">Subscribe Me</button>
+            </form>
+        </div>
+        <!-- End Content -->
+    </div>
+    <!-- End Subscribe for Updates Modal Window -->
+
+
+    <!-- ========== END SECONDARY CONTENTS ========== -->
 
     <!-- JS Global Compulsory -->
     <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
@@ -331,16 +358,9 @@
     <script src="assets/js/components/hs.countdown.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.1/axios.min.js"></script>
 
-    <script>
-        function showModal() {
-            document.getElementById("loading").style.display = "none";
-        }
-    </script>
-
     <!-- src="https://www.paypal.com/sdk/js?client-id=AeSkIlCgK1bjX6UPr8w9fDyMD7F5WsuzJWWbgiNSyEi2BnU43V6j5kJbRCK87gk6uYi8HfpyYyCKAzK_&currency=USD"></script> -->
     <script
-        src="https://www.paypal.com/sdk/js?client-id=Aes7-mZ9lsMi3h-m6lZ-eIQFBaUoF_hpHW1fF8bEZ5a59vZvzeTg75ZZc78g5h5igwkSABHfvlDQk8VQ&vault=true"
-        data-sdk-integration-source="button-factory"></script>
+     src="https://www.paypal.com/sdk/js?client-id=Aes7-mZ9lsMi3h-m6lZ-eIQFBaUoF_hpHW1fF8bEZ5a59vZvzeTg75ZZc78g5h5igwkSABHfvlDQk8VQ&vault=true" data-sdk-integration-source="button-factory" ></script>
     <!-- JS Plugins Init. -->
     <script>
 
@@ -393,7 +413,7 @@
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
 
-
+            
 
             // createOrder: function (data, actions) {
             //     console.log('=========createorder====', data, actions)
@@ -424,17 +444,17 @@
                 tagline: true
             },
 
-            createSubscription: function (data, actions) {
-                return actions.subscription.create({
-                    'plan_id': 'P-7MG6534019154735TL4FSIZI'
-                });
-            },
-            onCancel: function (data) {
-                alert("The user cancelled", data);
-            },
-            onApprove: function (data, actions) {
-                alert(data.subscriptionID);
-            }
+            createSubscription: function(data, actions) {
+        return actions.subscription.create({
+          'plan_id': 'P-7MG6534019154735TL4FSIZI'
+        });
+      },
+      onCancel: function (data) {
+            alert("The user cancelled",data);
+        },
+      onApprove: function(data, actions) {
+        alert(data.subscriptionID);
+      }
 
 
         }).render('#paypal-button-container');
@@ -511,14 +531,7 @@
 
             if (result.token) {
                 console.log("token", result.token, name);
-
                 this.payment(result.token, name)
-
-
-                $('#myModal').modal('hide');
-
-                document.getElementById("loading").style.display = "block";
-
                 // Use the token to create a charge or a customer
                 // https://stripe.com/docs/charges
                 //successElement.querySelector('.token').textContent = result.token.id;
@@ -535,10 +548,10 @@
 
         document.querySelector('.stripeform').addEventListener('submit', function (e) {
             e.preventDefault();
-
             var form = document.querySelector('.stripeform');
             var extraDetails = {
                 name: form.querySelector('input[name=cardholder-name]').value,
+                //   address_zip: form.querySelector('input[name=address-zip]').value
             };
             stripe.createToken(card, extraDetails).then(result => {
                 setOutcome(result, extraDetails.name)
@@ -550,54 +563,18 @@
                 "name": name,
                 "token": token.id
             }
-            axios.post('https://payments.peepsx.com/users/payment', object).then((result) => {
+            axios.post('http://localhost:3000/users/payment', object).then((result) => {
                 console.log("api response ====== ", result.data.data.id, result.data.data.status)
                 let subscriptionid = localStorage.setItem("stripedata", result.data.data.id)
                 let subscriptionstaus = localStorage.setItem("stripestatus", result.data.data.status)
                 let paymenttype = localStorage.setItem('paymentType', "Stripe")
-                document.getElementById("loading").style.display = "none";
-                modals.style.display = "block";
-
-
-
-
-
-                // alert('You payment is successful.')
+                alert('You payment is successful.')
                 console.log('localstorage console===', subscriptionid, subscriptionstaus)
             }).catch((error) => {
                 console.log(error)
             })
         }
-
     </script>
-
-    <script>
-        // Get the modal
-        var modals = document.getElementById("successmodel");
-
-        // Get the button that opens the modal
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("closeme")[0];
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modals.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modals.style.display = "none";
-            }
-        }
-        function closemodalsecondmodal() {
-            console.log('modal second close button')
-            $('#successmodel').modal('hide');
-
-        }
-    </script>
-
     <script>
         function peepsmember() {
             console.log('method peepsmember')
@@ -615,7 +592,7 @@
             let phoneno = document.getElementById('phoneno').value
             let email = document.getElementById('email').value
             if (subsid == "" || subsid == null && subsstatus == "" || subsstatus == null && paymenttype == "" || paymenttype == null) {
-                alert('Please complete your payment first either by paypal or card')
+                alert('Please comple your payment first')
             } else if (fname == "" || fname == null) {
                 alert('Enter first name')
             } else if (lname == "" || lname == null) {
@@ -653,13 +630,13 @@
                     "subscriptionId": subsid,
                     "subscriptionStatus": subsstatus
                 }
-                axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
+                axios.post('http://localhost:3000/users/saveuser', objdata).then((response) => {
                     console.log("api response ====== saveuser", response.data.message)
                     if (response) {
                         console.log(response.data)
                         alert('You are peeps member now')
                         localStorage.removeItem("paymentType");
-                    } else {
+                    }else{
                         alert('Please try again')
                     }
                 }).catch((error) => {
