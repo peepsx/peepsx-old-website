@@ -84,142 +84,85 @@
                             <p class="lead">
                                 Please fill out the form below to become a PeepsPatriot
                             </p>
-                            <form class="custom-form" action="" method="">
-                                <div class="form-elements">
-                                    <div class="two-lables">
-                                        <div class="fname up-lable">
-                                            <!-- <label>First Name*:</label> -->
-                                            <input type="text" maxlength="200" name="First Name"
-                                                placeholder="First Name*" required>
-                                        </div>
-
-                                        <div class="lname up-lable">
-                                            <!-- <label>Last Name*:</label> -->
-                                            <input type="text" maxlength="200" name="Last Name" placeholder="Last Name*"
-                                                required>
-                                        </div>
-                                    </div>
-                                    <div class="two-lables">
-                                        <div class="add1 up-lable">
-                                            <!-- <label>Address1*:</label> -->
-                                            <input type="text" maxlength="200" name="Address1" placeholder="Address1*"
-                                                required>
-                                        </div>
-
-                                        <div class="add2 up-lable">
-                                            <!-- <label>Address2*:</label> -->
-                                            <input type="text" maxlength="200" name="Address2" placeholder="Address2*"
-                                                required>
-                                        </div>
-                                    </div>
-                                    <div class="two-lables">
-                                        <div class="city up-lable">
-                                            <!-- <label>City*:</label> -->
-                                            <input type="text" maxlength="100" name="City" placeholder="City*" required>
-                                        </div>
-                                        <div class="state up-lable">
-                                            <!-- <label> State*:</label> -->
-                                            <input type="text" maxlength="100" name="State" placeholder="State*"
-                                                required>
-                                        </div>
-                                        <div class="zip up-lable">
-                                            <!-- <label>Zip Code*:</label> -->
-                                            <input type="text" maxlength="10" name="Zip Code" placeholder="Zip Code"
-                                                required>
-                                        </div>
-                                        <div class="country up-lable">
-                                            <!-- <label>Country*:</label> -->
-                                            <input type="text" maxlength="200" name="Country" placeholder="Country"
-                                                required>
-                                        </div>
-                                    </div>
-                                    <div class="two-lables">
-                                        <div class="phone up-lable">
-                                            <!-- <label>Phone Number*:</label> -->
-                                            <input type="tel" maxlength="11" name="phone number" placeholder="Phone"
-                                                required>
-                                        </div>
-                                        <div class="email up-lable">
-                                            <!-- <label>Email Id*:</label> -->
-                                            <input type="email" maxlength="200" name="email" placeholder="Email"
-                                                required>
-                                        </div>
-                                    </div>
-                                    <div class="payment">
-                                        <p>Payment Options</p>
-                                        <div class="flex-container payment-optn">
-                                            <div id="paypal-button-container"></div>
-                                            <!-- Trigger the modal with a button -->
-                                            <!-- <button type="button" class="btn btn-sm btn-blue"
-                                                onclick="paymentstripe()">Pay With Card</button> -->
-                                            <!-- Trigger the modal with a button -->
-                                            <button type="button" class="btn btn-sm btn-blue" data-toggle="modal"
-                                                data-target="#myModal">Pay With Card</button>
-
-
-                                            <!-- Modal stripe payment-->
-                                            <div class="modal fade" id="myModal" role="dialog">
-                                                <div class="modal-dialog">
-
-                                                    <!-- Modal content-->
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close"
-                                                                data-dismiss="modal">&times;</button>
-                                                            <h4 class="modal-title">Payment Details</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form>
-                                                                <!-- <label>
-                                                                    <span>Name</span>
-                                                                    <input name="cardholder-name" class="field"
-                                                                        placeholder="Jane Doe" />
-                                                                </label>
-                                                                <label>
-                                                                    <span>Phone</span>
-                                                                    <input class="field" placeholder="(123) 456-7890"
-                                                                        type="tel" />
-                                                                </label>
-                                                                <label>
-                                                                    <span>ZIP code</span>
-                                                                    <input name="address-zip" class="field"
-                                                                        placeholder="94110" />
-                                                                </label> -->
-                                                                <label>
-                                                                    <span>Card</span>
-                                                                    <div id="card-element" class="field"></div>
-                                                                </label>
-                                                                <div class="pay-btn"><button type="submit">Pay $25</button></div>
-                                                                <div class="outcome">
-                                                                    <div class="error"></div>
-                                                                    <div class="success">
-                                                                        Success! Your Stripe token is <span
-                                                                            class="token"></span>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-
-
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default"
-                                                                data-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                            <!-- ------------------------------modal stripe ends---------- -->
-
-                                        </div>
-                                        <button class="btn btn-sm btn-blue">Become a Peeps Member</button>
+                            <!-- <form class="custom-form"> -->
+                            <div class="form-elements">
+                                <div class="two-lables">
+                                    <div class="fname up-lable">
+                                        <!-- <label>First Name*:</label> -->
+                                        <input type="text" maxlength="200" name="First Name" id="fname"
+                                            placeholder="First Name*" required>
                                     </div>
 
-
-
+                                    <div class="lname up-lable">
+                                        <!-- <label>Last Name*:</label> -->
+                                        <input type="text" maxlength="200" name="Last Name" placeholder="Last Name*"
+                                            id="lname" required>
+                                    </div>
                                 </div>
-                            </form>
+                                <div class="two-lables">
+                                    <div class="add1 up-lable">
+                                        <!-- <label>Address1*:</label> -->
+                                        <input type="text" maxlength="200" name="Address1" placeholder="Address1*"
+                                            id="addressone" required>
+                                    </div>
+
+                                    <div class="add2 up-lable">
+                                        <!-- <label>Address2*:</label> -->
+                                        <input type="text" maxlength="200" name="Address2" placeholder="Address2*"
+                                            id="addresstwo" required>
+                                    </div>
+                                </div>
+                                <div class="two-lables">
+                                    <div class="city up-lable">
+                                        <!-- <label>City*:</label> -->
+                                        <input type="text" maxlength="100" name="City" placeholder="City*" id="city"
+                                            required>
+                                    </div>
+                                    <div class="state up-lable">
+                                        <!-- <label> State*:</label> -->
+                                        <input type="text" maxlength="100" name="State" placeholder="State*" id="state"
+                                            required>
+                                    </div>
+                                    <div class="zip up-lable">
+                                        <!-- <label>Zip Code*:</label> -->
+                                        <input type="text" maxlength="10" name="Zip Code" placeholder="Zip Code"
+                                            id="zipcode" required>
+                                    </div>
+                                    <div class="country up-lable">
+                                        <!-- <label>Country*:</label> -->
+                                        <input type="text" maxlength="200" name="Country" placeholder="Country"
+                                            id="country" required>
+                                    </div>
+                                </div>
+                                <div class="two-lables">
+                                    <div class="phone up-lable">
+                                        <!-- <label>Phone Number*:</label> -->
+                                        <input type="tel" maxlength="11" name="phone number" placeholder="Phone"
+                                            id="phoneno" required>
+                                    </div>
+                                    <div class="email up-lable">
+                                        <!-- <label>Email Id*:</label> -->
+                                        <input type="email" maxlength="200" name="email" placeholder="Email" id="email"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="payment">
+                                    <p>Payment Options</p>
+                                    <div class="flex-container payment-optn">
+                                        <div id="paypal-button-container"></div>
+
+                                        <button type="button" class="btn btn-sm btn-blue" data-toggle="modal"
+                                            data-target="#myModal">Pay With Card</button>
+
+                                    </div>
+                                    <button class="btn btn-sm btn-blue" onclick="peepsmember()">Become a Peeps
+                                        Member</button>
+                                </div>
+
+
+
+                            </div>
+                            <!-- </form> -->
                             <a class="btn btn-sm btn-primary " href="https://dsocial.network" role="button"
                                 target="_blank">
                                 Check Our dSocial </a>
@@ -231,28 +174,49 @@
                         </div>
                         <!-- End Title -->
 
-                        <!-- Countdown -->
-                        <div class="js-countdown row" data-end-date="2020/5/08" data-month-format="%m"
-                            data-days-format="%D" data-hours-format="%H" data-minutes-format="%M"
-                            data-seconds-format="%S">
-                            <div class="col-6 col-sm-3 mb-7 mb-sm-0">
-                                <span class="js-cd-days d-block display-4 text-primary font-weight-medium"></span>
-                                <span class="d-block h5 font-weight-normal mb-0">Days</span>
-                            </div>
-                            <div class="col-6 col-sm-3 mb-7 mb-sm-0">
-                                <span class="js-cd-hours d-block display-4 text-primary font-weight-medium"></span>
-                                <span class="d-block h5 font-weight-normal mb-0">Hours</span>
-                            </div>
-                            <div class="col-6 col-sm-3">
-                                <span class="js-cd-minutes d-block display-4 text-primary font-weight-medium"></span>
-                                <span class="d-block h5 font-weight-normal mb-0">Mins</span>
-                            </div>
-                            <div class="col-6 col-sm-3">
-                                <span class="js-cd-seconds d-block display-4 text-primary font-weight-medium"></span>
-                                <span class="d-block h5 font-weight-normal mb-0">Secs</span>
+                        <!-- Modal stripe payment-->
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Payment Details</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="stripeform">
+                                            <label>
+                                                <span>Name</span>
+                                                <input name="cardholder-name" class="field" placeholder="Jane Doe" />
+                                            </label>
+                                            <label>
+                                                <span>Card</span>
+                                                <div id="card-element" class="field"></div>
+                                            </label>
+                                            <div class="pay-btn"><button type="submit">Pay
+                                                    $5</button></div>
+                                            <!-- <div class="outcome">
+                                                <div class="error"></div>
+                                                <div class="success">
+                                                    Success! Your Stripe token is <span
+                                                        class="token"></span>
+                                                </div>
+                                            </div> -->
+                                        </form>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                        <!-- End Countdown -->
+
+                        <!-- ------------------------------modal stripe ends---------- -->
                     </div>
                 </div>
             </div>
@@ -559,22 +523,22 @@
         });
         card.mount('#card-element');
 
-        function setOutcome(result) {
-            var successElement = document.querySelector('.success');
-            var errorElement = document.querySelector('.error');
-            successElement.classList.remove('visible');
-            errorElement.classList.remove('visible');
+        function setOutcome(result, name) {
+            // var successElement = document.querySelector('.success');
+            // var errorElement = document.querySelector('.error');
+            // successElement.classList.remove('visible');
+            // errorElement.classList.remove('visible');
 
             if (result.token) {
-                console.log("token",result.token);
-                this.payment(result.token)
+                console.log("token", result.token, name);
+                this.payment(result.token, name)
                 // Use the token to create a charge or a customer
                 // https://stripe.com/docs/charges
-                successElement.querySelector('.token').textContent = result.token.id;
-                successElement.classList.add('visible');
+                //successElement.querySelector('.token').textContent = result.token.id;
+                //successElement.classList.add('visible');
             } else if (result.error) {
-                errorElement.textContent = result.error.message;
-                errorElement.classList.add('visible');
+                //   errorElement.textContent = result.error.message;
+                // errorElement.classList.add('visible');
             }
         }
 
@@ -582,27 +546,105 @@
             setOutcome(event);
         });
 
-        document.querySelector('form').addEventListener('submit', function (e) {
+        document.querySelector('.stripeform').addEventListener('submit', function (e) {
             e.preventDefault();
-            var form = document.querySelector('form');
+            var form = document.querySelector('.stripeform');
             var extraDetails = {
                 name: form.querySelector('input[name=cardholder-name]').value,
-                address_zip: form.querySelector('input[name=address-zip]').value
+                //   address_zip: form.querySelector('input[name=address-zip]').value
             };
-            stripe.createToken(card, extraDetails).then(setOutcome);
+            stripe.createToken(card, extraDetails).then(result => {
+                setOutcome(result, extraDetails.name)
+            });
         });
 
-        async function payment(token) {
-            const config = {
-                method: 'POST',
-                url: 'http://localhost:3000/users/payment',
-                headers: { 'Token': 'token' }
+        async function payment(token, name) {
+            let object = {
+                "name": name,
+                "token": token.id
             }
-            let res = await axios(config)
-            console.log('==========', res)
+            axios.post('http://localhost:3000/users/payment', object).then((result) => {
+                console.log("api response ====== ", result.data.data.id, result.data.data.status)
+                let subscriptionid = localStorage.setItem("stripedata", result.data.data.id)
+                let subscriptionstaus = localStorage.setItem("stripestatus", result.data.data.status)
+                let paymenttype = localStorage.setItem('paymentType', "Stripe")
+                alert('You payment is successful.')
+                console.log('localstorage console===', subscriptionid, subscriptionstaus)
+            }).catch((error) => {
+                console.log(error)
+            })
         }
+    </script>
+    <script>
+        function peepsmember() {
+            console.log('method peepsmember')
+            let subsid = localStorage.getItem('stripedata')
+            let subsstatus = localStorage.getItem('stripestatus')
+            let paymenttype = localStorage.getItem('paymentType')
+            let fname = document.getElementById('fname').value
+            let lname = document.getElementById('lname').value
+            let addressone = document.getElementById('addressone').value
+            let addresstwo = document.getElementById('addresstwo').value
+            let city = document.getElementById('city').value
+            let state = document.getElementById('state').value
+            let zipcode = document.getElementById('zipcode').value
+            let country = document.getElementById('country').value
+            let phoneno = document.getElementById('phoneno').value
+            let email = document.getElementById('email').value
+            if (subsid == "" || subsid == null && subsstatus == "" || subsstatus == null && paymenttype == "" || paymenttype == null) {
+                alert('Please comple your payment first')
+            } else if (fname == "" || fname == null) {
+                alert('Enter first name')
+            } else if (lname == "" || lname == null) {
+                alert('Enter last name')
+            } else if (addressone == "" || addressone == null) {
+                alert('Enter addressone')
+            } else if (addresstwo == "" || addresstwo == null) {
+                alert('Enter addresstwo')
+            } else if (city == "" || city == null) {
+                alert('Enter city')
+            } else if (state == "" || state == null) {
+                alert('Enter state')
+            } else if (zipcode == "" || zipcode == null) {
+                alert('Enter zipcode')
+            } else if (country == "" || country == null) {
+                alert('Enter country')
+            } else if (phoneno == "" || phoneno == null) {
+                alert('Enter PhoneNo')
+            } else if (email == "" || email == null) {
+                alert('Enter Email')
+            } else {
+                console.log('values', subsid, subsstatus, fname, lname, addressone, addresstwo, city, zipcode, country, phoneno, email, typeof data)
+                let objdata = {
+                    "fName": fname,
+                    "lName": lname,
+                    "addressOne": addressone,
+                    "addressTwo": addresstwo,
+                    "city": city,
+                    "state": state,
+                    "zipcode": zipcode,
+                    "country": country,
+                    "phoneNo": phoneno,
+                    "email": email,
+                    "paymenttype": paymenttype,
+                    "subscriptionId": subsid,
+                    "subscriptionStatus": subsstatus
+                }
+                axios.post('http://localhost:3000/users/saveuser', objdata).then((response) => {
+                    console.log("api response ====== saveuser", response.data.message)
+                    if (response) {
+                        console.log(response.data)
+                        alert('You are peeps member now')
+                        localStorage.removeItem("paymentType");
+                    }else{
+                        alert('Please try again')
+                    }
+                }).catch((error) => {
+                    console.log(error)
+                })
+            }
 
-
+        }
     </script>
 </body>
 
