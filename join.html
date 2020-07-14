@@ -186,7 +186,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Payment Details</h4>
+                                        <h4 class="modal-title">Stripe Payment Details</h4>
                                     </div>
                                     <div class="modal-body">
                                         <form class="stripeform">
@@ -200,16 +200,10 @@
                                             </label>
                                             <div class="pay-btn"><button type="submit">Pay
                                                     $5</button></div>
-                                             <div class="outcome"> 
+                                            <div class="outcome">
                                                 <div class="error"></div>
-                                                <!-- <div class="success">
-                                                    Success! Your Stripe token is <span
-                                                        class="token"></span>
-                                                </div> -->
-                                            </div> 
+                                            </div>
                                         </form>
-
-
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default"
@@ -221,29 +215,11 @@
                         </div>
 
                         <!-- ------------------------------modal stripe ends---------- -->
-
-
                     </div>
                 </div>
             </div>
         </div>
         <!-- End Hero Section -->
-
-        <!-- ------------------modal dialog for success payment-------------- -->
-        <!-- <div id="successmodel" class="modal" role="dialog"> -->
-
-            <!-- Modal content -->
-            <!-- <div class="modal-content"> -->
-                <!-- <span class="closeme" id="closesuccess" onclick="closemodalsecondmodal()">&times;</span> -->
-                <!-- <h4>Your payment is Successful.</h4> -->
-                <!-- <p >Your subscriptionId is <span id="subId"></span> </p> -->
-
-            <!-- </div> -->
-
-        <!-- </div> -->
-
-
-        <!-- ------------------modal dialog for success payment-------------- -->
 
     </main>
     <!-- ========== END MAIN CONTENT ========== -->
@@ -356,7 +332,7 @@
                 console.log(error)
             });
 
-       
+
     </script>
     <script>
         // Render the PayPal button into #paypal-button-container
@@ -394,17 +370,41 @@
             },
 
             createSubscription: function (data, actions) {
+                document.getElementById("loading").style.display = "block";
+
                 return actions.subscription.create({
                     'plan_id': 'P-7MG6534019154735TL4FSIZI'
                 });
             },
             onCancel: function (data) {
                 alert("The user cancelled", data);
+                document.getElementById("loading").style.display = "none";
+
             },
             onApprove: function (data, actions) {
                 alert(data.subscriptionID);
                 console.log("testing from Angie", data);
                 console.log("testing from Angie2", data.subscriptionID);
+
+                let object = {
+                    "orderID": data.orderID,
+                    "billingToken": data.billingToken,
+                    "subscriptionID": data.subscriptionID,
+                    "facilitatorAccessToken": data.facilitatorAccessToken
+                }
+
+                axios.post('http://localhost:3000/users/paypalpayment', object).then((result) => {
+                    console.log("api response ====== ", result.data.data.id, result.data.data.status)
+                    document.getElementById("subId").innerHTML = result.data.data.id
+                    localStorage.setItem("paypalsubId", data.subscriptionID)
+                    localStorage.setItem("paypalstatus", "active")
+                    localStorage.setItem('paymentType', "paypal")
+                    document.getElementById("loading").style.display = "none";
+                    swal("Your payment is Successful.", `Your SubscriptionId is: ${result.data.data.id}`, "success");
+
+                }).catch((error) => {
+                    console.log(error)
+                })
 
             }
 
@@ -483,7 +483,7 @@
                 //successElement.querySelector('.token').textContent = result.token.id;
                 //successElement.classList.add('visible');
             } else if (result.error) {
-                  errorElement.textContent = result.error.message;
+                errorElement.textContent = result.error.message;
                 errorElement.classList.add('visible');
             }
         }
@@ -509,7 +509,7 @@
                 "name": name,
                 "token": token.id
             }
-            axios.post('https://payments.peepsx.com/users/payment', object).then((result) => {
+            axios.post('http://localhost:3000/users/payment', object).then((result) => {
                 console.log("api response ====== ", result.data.data.id, result.data.data.status)
                 // document.getElementById("subId").innerHTML = result.data.data.id
                 let subscriptionid = localStorage.setItem("stripedata", result.data.data.id)
@@ -525,39 +525,22 @@
 
     </script>
 
-    <script>
-        // Get the modal
-        var modals = document.getElementById("successmodel");
-
-        // Get the button that opens the modal
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("closeme")[0];
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modals.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modals.style.display = "none";
-            }
-        }
-        function closemodalsecondmodal() {
-            console.log('modal second close button')
-            $('#successmodel').modal('hide');
-
-        }
-    </script>
 
     <script>
         function peepsmember() {
             console.log('method peepsmember')
+
+            //getting stripe data to send
             let subsid = localStorage.getItem('stripedata')
             let subsstatus = localStorage.getItem('stripestatus')
+
+            //getting paypal data to send
+            let paypal_sub_id = localStorage.getItem("paypalsubId")
+            let paypal_status = localStorage.getItem("paypalstatus")
+
+            //commont type
             let paymenttype = localStorage.getItem('paymentType')
+
             let fname = document.getElementById('fname').value
             let lname = document.getElementById('lname').value
             let addressone = document.getElementById('addressone').value
