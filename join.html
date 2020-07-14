@@ -395,8 +395,7 @@
                     "facilitatorAccessToken": data.facilitatorAccessToken
                 }
 
-                axios.post('http://localhost:3000/users/paypalpayment', object).then((result) => {
-                    console.log("api response ====== ", result.data.data.id, result.data.data.status)
+                axios.post('https://payments.peepsx.com/users/paypalpayment', object).then((result) => {
                     document.getElementById("subId").innerHTML = result.data.data.id
                     localStorage.setItem("paypalsubId", data.subscriptionID)
                     localStorage.setItem("paypalstatus", "active")
@@ -470,7 +469,6 @@
             errorElement.classList.remove('visible');
 
             if (result.token) {
-                console.log("token", result.token, name);
 
                 this.payment(result.token, name)
 
@@ -510,15 +508,12 @@
                 "name": name,
                 "token": token.id
             }
-            axios.post('http://localhost:3000/users/payment', object).then((result) => {
-                console.log("api response ====== ", result.data.data.id, result.data.data.status)
-                // document.getElementById("subId").innerHTML = result.data.data.id
-                let subscriptionid = localStorage.setItem("stripedata", result.data.data.id)
-                let subscriptionstaus = localStorage.setItem("stripestatus", result.data.data.status)
-                let paymenttype = localStorage.setItem('paymentType', "Stripe")
+            axios.post('https://payments.peepsx.com/users/payment', object).then((result) => {
+                localStorage.setItem("stripedata", result.data.data.id)
+                localStorage.setItem("stripestatus", result.data.data.status)
+                localStorage.setItem('paymentType', "Stripe")
                 document.getElementById("loading").style.display = "none";
                 swal("Your payment is Successful.", `Your SubscriptionId is: ${result.data.data.id}`, "success");
-                console.log('localstorage console===', subscriptionid, subscriptionstaus)
             }).catch((error) => {
                 console.log('error block stripe payment',error)
             })
@@ -529,15 +524,6 @@
 
     <script>
         function peepsmember() {
-            console.log('method peepsmember')
-
-            //getting stripe data to send
-            let subsid = localStorage.getItem('stripedata')
-            let subsstatus = localStorage.getItem('stripestatus')
-
-            //getting paypal data to send
-            let paypal_sub_id = localStorage.getItem("paypalsubId")
-            let paypal_status = localStorage.getItem("paypalstatus")
 
             //commont type
             let paymenttype = localStorage.getItem('paymentType')
@@ -608,8 +594,13 @@
                     icon: "warning"
                 });
             } else {
-                console.log('values', subsid, subsstatus, fname, lname, addressone, addresstwo, city, zipcode, country, phoneno, email, typeof data)
-                let objdata = {
+
+                if(paymenttype == 'Stripe'){
+
+                 let subsid = localStorage.getItem('stripedata')
+                 let subsstatus = localStorage.getItem('stripestatus')
+
+                 let objdata = {
                     "fName": fname,
                     "lName": lname,
                     "addressOne": addressone,
@@ -625,7 +616,40 @@
                     "subscriptionStatus": subsstatus
                 }
                 axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
-                    console.log("api response ====== saveuser", response.data.message)
+                    if (response) {
+                        console.log(response.data)
+                        alert('You are peeps member now')
+                        localStorage.removeItem("paymentType");
+                    } else {
+                        alert('Please try again')
+                    }
+                }).catch((error) => {
+                    console.log(error)
+                })
+
+
+                }
+                else{
+
+                  let subsid = localStorage.getItem("paypalsubId")
+                  let subsstatus = localStorage.getItem("paypalstatus")
+
+                  let objdata = {
+                    "fName": fname,
+                    "lName": lname,
+                    "addressOne": addressone,
+                    "addressTwo": addresstwo,
+                    "city": city,
+                    "state": state,
+                    "zipcode": zipcode,
+                    "country": country,
+                    "phoneNo": phoneno,
+                    "email": email,
+                    "paymenttype": paymenttype,
+                    "subscriptionId": subsid,
+                    "subscriptionStatus": subsstatus
+                }
+                axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
                     if (response) {
                         console.log(response.data)
                         swal("You are peeps member now.", "success");
@@ -639,6 +663,10 @@
                 }).catch((error) => {
                     console.log(error)
                 })
+
+                }
+
+
             }
 
         }
