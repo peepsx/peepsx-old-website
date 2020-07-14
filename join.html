@@ -198,13 +198,13 @@
                                             </label>
                                             <div class="pay-btn"><button type="submit">Pay
                                                     $5</button></div>
-                                            <!-- <div class="outcome">
+                                             <div class="outcome"> 
                                                 <div class="error"></div>
-                                                <div class="success">
+                                                <!-- <div class="success">
                                                     Success! Your Stripe token is <span
                                                         class="token"></span>
-                                                </div>
-                                            </div> -->
+                                                </div> -->
+                                            </div> 
                                         </form>
 
 
@@ -233,8 +233,8 @@
             <!-- Modal content -->
             <div class="modal-content">
                 <span class="closeme" id="closesuccess" onclick="closemodalsecondmodal()">&times;</span>
-                <h3>Your payment is Successful.</h3>
-                <h4 >Your transectionID is </h4>
+                <h4>Your payment is Successful.</h4>
+                <p >Your subscriptionId is <span id="subId"></span> </p>
 
             </div>
 
@@ -409,23 +409,17 @@
 
         }).render('#paypal-button-container');
     </script>
-    <!-- <script src="assets/js/stripe.js"></script> -->
 
     <!-- =============modal start========== -->
     <script>
         // Get the modal
         var modal = document.getElementById("myModal");
-
-
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
-
-
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
             modal.style.display = "none";
         }
-
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
             if (event.target == modal) {
@@ -453,14 +447,13 @@
             style: {
                 base: {
                     iconColor: '#F99A52',
-                    color: 'blac',
+                    color: 'black',
                     lineHeight: '48px',
                     fontWeight: 400,
                     fontFamily: '"Open Sans", "Helvetica Neue", "Helvetica", sans-serif',
                     fontSize: '15px',
-
                     '::placeholder': {
-                        color: 'red',
+                        color: '#CFD7DF',
                     }
                 },
             }
@@ -469,9 +462,9 @@
 
         function setOutcome(result, name) {
             // var successElement = document.querySelector('.success');
-            // var errorElement = document.querySelector('.error');
+            var errorElement = document.querySelector('.error');
             // successElement.classList.remove('visible');
-            // errorElement.classList.remove('visible');
+            errorElement.classList.remove('visible');
 
             if (result.token) {
                 console.log("token", result.token, name);
@@ -488,8 +481,8 @@
                 //successElement.querySelector('.token').textContent = result.token.id;
                 //successElement.classList.add('visible');
             } else if (result.error) {
-                //   errorElement.textContent = result.error.message;
-                // errorElement.classList.add('visible');
+                  errorElement.textContent = result.error.message;
+                errorElement.classList.add('visible');
             }
         }
 
@@ -516,6 +509,7 @@
             }
             axios.post('https://payments.peepsx.com/users/payment', object).then((result) => {
                 console.log("api response ====== ", result.data.data.id, result.data.data.status)
+                document.getElementById("subId").innerHTML = result.data.data.id
                 let subscriptionid = localStorage.setItem("stripedata", result.data.data.id)
                 let subscriptionstaus = localStorage.setItem("stripestatus", result.data.data.status)
                 let paymenttype = localStorage.setItem('paymentType', "Stripe")
