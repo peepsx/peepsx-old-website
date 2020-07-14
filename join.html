@@ -404,6 +404,31 @@
                 console.log("testing from Angie", data);
                 console.log("testing from Angie2", data.subscriptionID);
 
+                let object = {
+                "orderID": data.orderID,
+                "billingToken": data.billingToken,
+                "subscriptionID":data.subscriptionID,
+                "facilitatorAccessToken":data.facilitatorAccessToken
+                }
+
+                axios.post('http://localhost:3000/users/paypalpayment', object).then((result) => {
+                console.log("api response ====== ", result.data.data.id, result.data.data.status)
+                document.getElementById("subId").innerHTML = result.data.data.id
+                localStorage.setItem("paypalsubId", data.subscriptionID)
+                localStorage.setItem("paypalstatus", "active")
+                localStorage.setItem('paymentType', "paypal")
+                document.getElementById("loading").style.display = "none";
+                modals.style.display = "block";
+
+
+
+
+
+                
+            }).catch((error) => {
+                console.log(error)
+            })
+
             }
 
 
@@ -507,21 +532,16 @@
                 "name": name,
                 "token": token.id
             }
-            axios.post('https://payments.peepsx.com/users/payment', object).then((result) => {
+            axios.post('http://localhost:3000/users/payment', object).then((result) => {
                 console.log("api response ====== ", result.data.data.id, result.data.data.status)
                 document.getElementById("subId").innerHTML = result.data.data.id
-                let subscriptionid = localStorage.setItem("stripedata", result.data.data.id)
-                let subscriptionstaus = localStorage.setItem("stripestatus", result.data.data.status)
-                let paymenttype = localStorage.setItem('paymentType', "Stripe")
+                localStorage.setItem("stripedata", result.data.data.id)
+                localStorage.setItem("stripestatus", result.data.data.status)
+                localStorage.setItem('paymentType', "Stripe")
                 document.getElementById("loading").style.display = "none";
                 modals.style.display = "block";
 
 
-
-
-
-                // alert('You payment is successful.')
-                console.log('localstorage console===', subscriptionid, subscriptionstaus)
             }).catch((error) => {
                 console.log(error)
             })
@@ -559,9 +579,21 @@
     <script>
         function peepsmember() {
             console.log('method peepsmember')
+
+            //getting stripe data to send
             let subsid = localStorage.getItem('stripedata')
             let subsstatus = localStorage.getItem('stripestatus')
+
+
+            //getting paypal data to send
+            let paypal_sub_id = localStorage.getItem("paypalsubId")
+            let paypal_status = localStorage.getItem("paypalstatus")
+
+
+            //commont type
             let paymenttype = localStorage.getItem('paymentType')
+
+
             let fname = document.getElementById('fname').value
             let lname = document.getElementById('lname').value
             let addressone = document.getElementById('addressone').value
