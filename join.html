@@ -377,12 +377,14 @@
                 });
             },
             onCancel: function (data) {
-                alert("The user cancelled", data);
+                swal("The user cancelled.", `${data}`, "success");
+                // alert("The user cancelled", data);
                 document.getElementById("loading").style.display = "none";
 
             },
             onApprove: function (data, actions) {
-                alert(data.subscriptionID);
+                swal("Your payment is Successful.", `Your SubscriptionId is: ${data.subscriptionID}`, "success");
+                // alert(data.subscriptionID);
                 console.log("testing from Angie", data);
                 console.log("testing from Angie2", data.subscriptionID);
 
@@ -401,7 +403,6 @@
                     localStorage.setItem('paymentType', "paypal")
                     document.getElementById("loading").style.display = "none";
                     swal("Your payment is Successful.", `Your SubscriptionId is: ${result.data.data.id}`, "success");
-
                 }).catch((error) => {
                     console.log(error)
                 })
@@ -519,7 +520,7 @@
                 swal("Your payment is Successful.", `Your SubscriptionId is: ${result.data.data.id}`, "success");
                 console.log('localstorage console===', subscriptionid, subscriptionstaus)
             }).catch((error) => {
-                console.log(error)
+                console.log('error block stripe payment',error)
             })
         }
 
@@ -552,27 +553,60 @@
             let phoneno = document.getElementById('phoneno').value
             let email = document.getElementById('email').value
             if (subsid == "" || subsid == null && subsstatus == "" || subsstatus == null && paymenttype == "" || paymenttype == null) {
-                alert('Please complete your payment first either by paypal or card')
+                swal({
+                    title: "Please complete your payment first either by paypal or by card!",
+                    icon: "warning"
+                });
             } else if (fname == "" || fname == null) {
-                alert('Enter first name')
+                swal({
+                    title: "Enter first name!",
+                    icon: "warning"
+                });
             } else if (lname == "" || lname == null) {
-                alert('Enter last name')
+                swal({
+                    title: "Enter your last name!",
+                    icon: "warning"
+                });
             } else if (addressone == "" || addressone == null) {
-                alert('Enter addressone')
+                swal({
+                    title: "Enter your first address!",
+                    icon: "warning"
+                });
             } else if (addresstwo == "" || addresstwo == null) {
-                alert('Enter addresstwo')
+                swal({
+                    title: "Enter your second address!",
+                    icon: "warning"
+                });
             } else if (city == "" || city == null) {
-                alert('Enter city')
+                swal({
+                    title: "Enter city name!",
+                    icon: "warning"
+                });
             } else if (state == "" || state == null) {
-                alert('Enter state')
+                swal({
+                    title: "Enter your state name!",
+                    icon: "warning"
+                });
             } else if (zipcode == "" || zipcode == null) {
-                alert('Enter zipcode')
+                swal({
+                    title: "Enter your zipcoe!",
+                    icon: "warning"
+                });
             } else if (country == "" || country == null) {
-                alert('Enter country')
+                swal({
+                    title: "Enter your country name!",
+                    icon: "warning"
+                });
             } else if (phoneno == "" || phoneno == null) {
-                alert('Enter PhoneNo')
+                swal({
+                    title: "Enter your phone number!",
+                    icon: "warning"
+                });
             } else if (email == "" || email == null) {
-                alert('Enter Email')
+                swal({
+                    title: "Enter your Email!",
+                    icon: "warning"
+                });
             } else {
                 console.log('values', subsid, subsstatus, fname, lname, addressone, addresstwo, city, zipcode, country, phoneno, email, typeof data)
                 let objdata = {
@@ -594,10 +628,13 @@
                     console.log("api response ====== saveuser", response.data.message)
                     if (response) {
                         console.log(response.data)
-                        alert('You are peeps member now')
+                        swal("You are peeps member now.", "success");
                         localStorage.removeItem("paymentType");
                     } else {
-                        alert('Please try again')
+                        swal({
+                            title: "Something went wrong,Please try again!",
+                            icon: "warning"
+                        });
                     }
                 }).catch((error) => {
                     console.log(error)
