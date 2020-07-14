@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="assets/vendor/font-awesome/css/all.min.css">
     <link rel="stylesheet" href="assets/vendor/custombox/dist/custombox.min.css">
     <link rel="stylesheet" href="assets/vendor/animate.css/animate.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
     <!-- CSS Space Template -->
     <link rel="stylesheet" href="assets/css/theme.css">
@@ -228,17 +230,17 @@
         <!-- End Hero Section -->
 
         <!-- ------------------modal dialog for success payment-------------- -->
-        <div id="successmodel" class="modal" role="dialog">
+        <!-- <div id="successmodel" class="modal" role="dialog"> -->
 
             <!-- Modal content -->
-            <div class="modal-content">
-                <span class="closeme" id="closesuccess" onclick="closemodalsecondmodal()">&times;</span>
-                <h4>Your payment is Successful.</h4>
-                <p >Your subscriptionId is <span id="subId"></span> </p>
+            <!-- <div class="modal-content"> -->
+                <!-- <span class="closeme" id="closesuccess" onclick="closemodalsecondmodal()">&times;</span> -->
+                <!-- <h4>Your payment is Successful.</h4> -->
+                <!-- <p >Your subscriptionId is <span id="subId"></span> </p> -->
 
-            </div>
+            <!-- </div> -->
 
-        </div>
+        <!-- </div> -->
 
 
         <!-- ------------------modal dialog for success payment-------------- -->
@@ -509,18 +511,12 @@
             }
             axios.post('https://payments.peepsx.com/users/payment', object).then((result) => {
                 console.log("api response ====== ", result.data.data.id, result.data.data.status)
-                document.getElementById("subId").innerHTML = result.data.data.id
+                // document.getElementById("subId").innerHTML = result.data.data.id
                 let subscriptionid = localStorage.setItem("stripedata", result.data.data.id)
                 let subscriptionstaus = localStorage.setItem("stripestatus", result.data.data.status)
                 let paymenttype = localStorage.setItem('paymentType', "Stripe")
                 document.getElementById("loading").style.display = "none";
-                modals.style.display = "block";
-
-
-
-
-
-                // alert('You payment is successful.')
+                swal("Your payment is Successful.", `Your SubscriptionId is: ${result.data.data.id}`, "success");
                 console.log('localstorage console===', subscriptionid, subscriptionstaus)
             }).catch((error) => {
                 console.log(error)
