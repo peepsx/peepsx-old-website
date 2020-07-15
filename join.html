@@ -613,10 +613,10 @@
                     axios.post('http://localhost:3000/users/saveuser', objdata).then((response) => {
                         if (response) {
                             console.log(response.data)
-                            swal(response.data.message);
+                            swal(response.data.message)
                             if(response.data.status){
 
-                            localStorage.removeItem("paymentType");
+                            localStorage.clear()
                             }
                         } else {
                             swal({
