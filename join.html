@@ -141,7 +141,7 @@
                                 <div class="two-lables">
                                     <div class="phone up-lable">
                                         <!-- <label>Phone Number*:</label> -->
-                                        <input type="tel" maxlength="11" name="phone number" placeholder="Phone"
+                                        <input type="number" maxlength="11" name="phone number" placeholder="Phone"
                                             id="phoneno" required>
                                     </div>
                                     <div class="email up-lable">
@@ -395,7 +395,7 @@
                     "facilitatorAccessToken": data.facilitatorAccessToken
                 }
 
-                axios.post('https://payments.peepsx.com/users/paypalpayment', object).then((result) => {
+                axios.post('http://localhost:3000/users/paypalpayment', object).then((result) => {
                     document.getElementById("subId").innerHTML = result.data.data.id
                     localStorage.setItem("paypalsubId", data.subscriptionID)
                     localStorage.setItem("paypalstatus", "active")
@@ -508,14 +508,14 @@
                 "name": name,
                 "token": token.id
             }
-            axios.post('https://payments.peepsx.com/users/payment', object).then((result) => {
+            axios.post('http://localhost:3000/users/payment', object).then((result) => {
                 localStorage.setItem("stripedata", result.data.data.id)
                 localStorage.setItem("stripestatus", result.data.data.status)
                 localStorage.setItem('paymentType', "Stripe")
                 document.getElementById("loading").style.display = "none";
                 swal("Your payment is Successful.", `Your SubscriptionId is: ${result.data.data.id}`, "success");
             }).catch((error) => {
-                console.log('error block stripe payment',error)
+                console.log('error block stripe payment', error)
             })
         }
 
@@ -538,12 +538,7 @@
             let country = document.getElementById('country').value
             let phoneno = document.getElementById('phoneno').value
             let email = document.getElementById('email').value
-            if (subsid == "" || subsid == null && subsstatus == "" || subsstatus == null && paymenttype == "" || paymenttype == null) {
-                swal({
-                    title: "Please complete your payment first either by paypal or by card!",
-                    icon: "warning"
-                });
-            } else if (fname == "" || fname == null) {
+             if (fname == "" || fname == null) {
                 swal({
                     title: "Enter first name!",
                     icon: "warning"
@@ -595,75 +590,88 @@
                 });
             } else {
 
-                if(paymenttype == 'Stripe'){
+                if (paymenttype == 'Stripe') {
 
-                 let subsid = localStorage.getItem('stripedata')
-                 let subsstatus = localStorage.getItem('stripestatus')
+                    let subsid = localStorage.getItem('stripedata')
+                    let subsstatus = localStorage.getItem('stripestatus')
 
-                 let objdata = {
-                    "fName": fname,
-                    "lName": lname,
-                    "addressOne": addressone,
-                    "addressTwo": addresstwo,
-                    "city": city,
-                    "state": state,
-                    "zipcode": zipcode,
-                    "country": country,
-                    "phoneNo": phoneno,
-                    "email": email,
-                    "paymenttype": paymenttype,
-                    "subscriptionId": subsid,
-                    "subscriptionStatus": subsstatus
-                }
-                axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
-                    if (response) {
-                        console.log(response.data)
-                        alert('You are peeps member now')
-                        localStorage.removeItem("paymentType");
-                    } else {
-                        alert('Please try again')
+                    let objdata = {
+                        "fName": fname,
+                        "lName": lname,
+                        "addressOne": addressone,
+                        "addressTwo": addresstwo,
+                        "city": city,
+                        "state": state,
+                        "zipcode": zipcode,
+                        "country": country,
+                        "phoneNo": phoneno,
+                        "email": email,
+                        "paymenttype": paymenttype,
+                        "subscriptionId": subsid,
+                        "subscriptionStatus": subsstatus
                     }
-                }).catch((error) => {
-                    console.log(error)
-                })
+                    axios.post('http://localhost:3000/users/saveuser', objdata).then((response) => {
+                        if (response) {
+                            console.log(response.data)
+                            swal(response.data.message);
+                            if(response.data.status){
+
+                            localStorage.removeItem("paymentType");
+                            }
+                        } else {
+                            swal({
+                                title: "Something went wrong,Please try again!",
+                                icon: "warning"
+                            });
+                        }
+                    }).catch((error) => {
+                        console.log(error)
+                    })
 
 
                 }
+                else if (paymenttype == 'paypal') {
+
+                    let subsid = localStorage.getItem("paypalsubId")
+                    let subsstatus = localStorage.getItem("paypalstatus")
+
+                    let objdata = {
+                        "fName": fname,
+                        "lName": lname,
+                        "addressOne": addressone,
+                        "addressTwo": addresstwo,
+                        "city": city,
+                        "state": state,
+                        "zipcode": zipcode,
+                        "country": country,
+                        "phoneNo": phoneno,
+                        "email": email,
+                        "paymenttype": paymenttype,
+                        "subscriptionId": subsid,
+                        "subscriptionStatus": subsstatus
+                    }
+                    axios.post('http://localhost:3000/users/saveuser', objdata).then((response) => {
+                        if (response) {
+                            console.log(response.data)
+                            swal("You are peeps member now.", "success");
+                            localStorage.removeItem("paymentType");
+                        } else {
+                            swal({
+                                title: "Something went wrong,Please try again!",
+                                icon: "warning"
+                            });
+                        }
+                    }).catch((error) => {
+                        console.log(error)
+                    })
+
+                }
+
                 else{
-
-                  let subsid = localStorage.getItem("paypalsubId")
-                  let subsstatus = localStorage.getItem("paypalstatus")
-
-                  let objdata = {
-                    "fName": fname,
-                    "lName": lname,
-                    "addressOne": addressone,
-                    "addressTwo": addresstwo,
-                    "city": city,
-                    "state": state,
-                    "zipcode": zipcode,
-                    "country": country,
-                    "phoneNo": phoneno,
-                    "email": email,
-                    "paymenttype": paymenttype,
-                    "subscriptionId": subsid,
-                    "subscriptionStatus": subsstatus
-                }
-                axios.post('https://payments.peepsx.com/users/saveuser', objdata).then((response) => {
-                    if (response) {
-                        console.log(response.data)
-                        swal("You are peeps member now.", "success");
-                        localStorage.removeItem("paymentType");
-                    } else {
-                        swal({
-                            title: "Something went wrong,Please try again!",
-                            icon: "warning"
-                        });
-                    }
-                }).catch((error) => {
-                    console.log(error)
-                })
-
+                    swal({
+                                title: "Please do the payment!",
+                                icon: "warning"
+                            });
                 }
 
 
