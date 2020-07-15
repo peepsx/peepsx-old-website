@@ -370,19 +370,24 @@
             },
 
             createSubscription: function (data, actions) {
+                document.getElementById("loading").style.display = "block";
 
                 return actions.subscription.create({
-                    'plan_id': 'P-1T425885B8579515XL4FTV5Y'
+                    'plan_id': 'P-7MG6534019154735TL4FSIZI'
                 });
             },
             onCancel: function (data) {
-                swal("You have Cancelled the payment");
+                swal("The user cancelled.", `${data}`, "success");
                 // alert("The user cancelled", data);
+                document.getElementById("loading").style.display = "none";
 
             },
             onApprove: function (data, actions) {
                 swal("Your payment is Successful.", `Your SubscriptionId is: ${data.subscriptionID}`, "success");
-           
+                // alert(data.subscriptionID);
+                console.log("testing from Angie", data);
+                console.log("testing from Angie2", data.subscriptionID);
+
                 let object = {
                     "orderID": data.orderID,
                     "billingToken": data.billingToken,
@@ -391,9 +396,12 @@
                 }
 
                 axios.post('http://localhost:3000/users/paypalpayment', object).then((result) => {
+                    document.getElementById("subId").innerHTML = result.data.data.id
                     localStorage.setItem("paypalsubId", data.subscriptionID)
                     localStorage.setItem("paypalstatus", "active")
                     localStorage.setItem('paymentType', "paypal")
+                    document.getElementById("loading").style.display = "none";
+                    swal("Your payment is Successful.", `Your SubscriptionId is: ${result.data.data.id}`, "success");
                 }).catch((error) => {
                     console.log(error)
                 })
@@ -519,7 +527,8 @@
 
             //commont type
             let paymenttype = localStorage.getItem('paymentType')
-
+            let regemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            // let letters = /^[A-Za-z]+$/;
             let fname = document.getElementById('fname').value
             let lname = document.getElementById('lname').value
             let addressone = document.getElementById('addressone').value
@@ -530,63 +539,58 @@
             let country = document.getElementById('country').value
             let phoneno = document.getElementById('phoneno').value
             let email = document.getElementById('email').value
-             if (fname == "" || fname == null) {
-                swal({
-                    title: "Enter first name!",
-                    icon: "warning"
-                });
+            if (fname == "" || fname == null) {
+                swal({ title: "Enter first name!", icon: "warning" });
+                return
+            } else if (!isNaN(fname)) {
+                swal({ title: "Enter valid first name!", icon: "warning" });
+                return
             } else if (lname == "" || lname == null) {
-                swal({
-                    title: "Enter your last name!",
-                    icon: "warning"
-                });
+                swal({ title: "Enter your last name!", icon: "warning" });
+                return
+            } else if (!isNaN(lname)) {
+                swal({ title: "Enter valid last name!", icon: "warning" });
+                return
             } else if (addressone == "" || addressone == null) {
-                swal({
-                    title: "Enter your first address!",
-                    icon: "warning"
-                });
+                swal({ title: "Enter your first address!", icon: "warning" });
+                return
             } else if (addresstwo == "" || addresstwo == null) {
-                swal({
-                    title: "Enter your second address!",
-                    icon: "warning"
-                });
+                swal({ title: "Enter your second address!", icon: "warning" });
+                return
             } else if (city == "" || city == null) {
-                swal({
-                    title: "Enter city name!",
-                    icon: "warning"
-                });
+                swal({ title: "Enter city name!", icon: "warning" });
+                return
+            } else if (!isNaN(city)) {
+                swal({ title: "Enter valid city name!", icon: "warning" });
+                return
             } else if (state == "" || state == null) {
-                swal({
-                    title: "Enter your state name!",
-                    icon: "warning"
-                });
+                swal({ title: "Enter your state name!", icon: "warning" });
+                return
+            } else if (!isNaN(state)) {
+                swal({ title: "Enter valid state name!", icon: "warning" });
+                return
             } else if (zipcode == "" || zipcode == null) {
-                swal({
-                    title: "Enter your zipcoe!",
-                    icon: "warning"
-                });
+                swal({ title: "Enter your zipcoe!", icon: "warning" });
+                return
             } else if (country == "" || country == null) {
-                swal({
-                    title: "Enter your country name!",
-                    icon: "warning"
-                });
+                swal({ title: "Enter your country name!", icon: "warning" });
+                return
+            } else if (!isNaN(country)) {
+                swal({ title: "Enter valid country name!", icon: "warning" });
+                return
             } else if (phoneno == "" || phoneno == null) {
-                swal({
-                    title: "Enter your phone number!",
-                    icon: "warning"
-                });
+                swal({ title: "Enter your phone number!", icon: "warning" });
+                return
             } else if (email == "" || email == null) {
-                swal({
-                    title: "Enter your Email!",
-                    icon: "warning"
-                });
+                swal({ title: "Enter your Email!", icon: "warning" });
+                return
+            } else if (regemail.test(email) == false) {
+                swal({ title: "Enter valid Email!", icon: "warning" });
+                return
             } else {
-
                 if (paymenttype == 'Stripe') {
-
                     let subsid = localStorage.getItem('stripedata')
                     let subsstatus = localStorage.getItem('stripestatus')
-
                     let objdata = {
                         "fName": fname,
                         "lName": lname,
@@ -605,10 +609,9 @@
                     axios.post('http://localhost:3000/users/saveuser', objdata).then((response) => {
                         if (response) {
                             console.log(response.data)
-                            swal(response.data.message)
-                            if(response.data.status){
-
-                            localStorage.clear()
+                            swal(response.data.message);
+                            if (response.data.status) {
+                                localStorage.removeItem("paymentType");
                             }
                         } else {
                             swal({
@@ -619,8 +622,6 @@
                     }).catch((error) => {
                         console.log(error)
                     })
-
-
                 }
                 else if (paymenttype == 'paypal') {
 
@@ -645,8 +646,11 @@
                     axios.post('http://localhost:3000/users/saveuser', objdata).then((response) => {
                         if (response) {
                             console.log(response.data)
-                            swal(response.data.message);
-                           // localStorage.removeItem("paymentType");
+                            swal({
+                                title: "You are peeps member now.",
+                                icon: "success"
+                            });
+                            localStorage.removeItem("paymentType");
                         } else {
                             swal({
                                 title: "Something went wrong,Please try again!",
@@ -659,11 +663,11 @@
 
                 }
 
-                else{
+                else {
                     swal({
-                                title: "Please do the payment!",
-                                icon: "warning"
-                            });
+                        title: "Please do the payment!",
+                        icon: "warning"
+                    });
                 }
 
 
