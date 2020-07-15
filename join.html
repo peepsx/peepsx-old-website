@@ -7,12 +7,9 @@
     <!-- Required Meta Tags Always Come First -->
     <meta charset="utf-8">
     <meta name="title" content="PeepsPatriot membership | Peeps">
-
     <meta name="description" content="Please fill out the form below to become a PeepsPatriot.">
-
     <meta name="keywords"
         content="peeps, peepssx, dsocial, dbrowser, dweb, arisen, dwallet, peeros, dsearch, dride, dbuy">
-
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Favicon -->
@@ -33,7 +30,7 @@
 
     <!-- CSS Space Template -->
     <link rel="stylesheet" href="assets/css/theme.css">
-    <!-- -----------------stripe payment js ----------- -->
+    <!-- stripe payment js -->
     <script src="https://js.stripe.com/v3/"></script>
 
 
@@ -162,9 +159,6 @@
                                     <button class="btn btn-sm btn-blue" onclick="peepsmember()">Become a Peeps
                                         Member</button>
                                 </div>
-
-
-
                             </div>
                             <!-- </form> -->
                             <a class="btn btn-sm btn-primary " href="https://dsocial.network" role="button"
@@ -287,7 +281,6 @@
     </footer>
     <!-- ========== END FOOTER ========== -->
 
-
     <!-- JS Global Compulsory -->
     <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
     <script src="assets/vendor/jquery-migrate/dist/jquery-migrate.min.js"></script>
@@ -318,12 +311,10 @@
     <!-- src="https://www.paypal.com/sdk/js?client-id=AeSkIlCgK1bjX6UPr8w9fDyMD7F5WsuzJWWbgiNSyEi2BnU43V6j5kJbRCK87gk6uYi8HfpyYyCKAzK_&currency=USD"></script> -->
     <script
         src="https://www.paypal.com/sdk/js?client-id=Aes7-mZ9lsMi3h-m6lZ-eIQFBaUoF_hpHW1fF8bEZ5a59vZvzeTg75ZZc78g5h5igwkSABHfvlDQk8VQ&vault=true"
-        data-sdk-integration-source="button-factory"></script>
+        data-sdk-integration-source="button-factory">
+        </script>
     <!-- JS Plugins Init. -->
     <script>
-
-
-
         axios.get('https://nv6khovry9.execute-api.us-east-1.amazonaws.com/dev/rsn_price_from_bts')
             .then(function (response) {
                 document.getElementById('rix-price').innerHTML = `RIX: $ ${parseFloat(response.data.data.USD.price).toFixed(4)}`;
@@ -331,9 +322,8 @@
             .catch(function (error) {
                 console.log(error)
             });
-
-
     </script>
+
     <script>
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
@@ -377,14 +367,12 @@
                 });
             },
             onCancel: function (data) {
-                swal("The user cancelled.", `${data}`, "success");
-                // alert("The user cancelled", data);
+                swal("The user cancelled.", `${data}`, "info");
                 document.getElementById("loading").style.display = "none";
 
             },
             onApprove: function (data, actions) {
                 swal("Your payment is Successful.", `Your SubscriptionId is: ${data.subscriptionID}`, "success");
-                // alert(data.subscriptionID);
                 console.log("testing from Angie", data);
                 console.log("testing from Angie2", data.subscriptionID);
 
@@ -407,8 +395,6 @@
                 })
 
             }
-
-
         }).render('#paypal-button-container');
     </script>
 
@@ -518,17 +504,13 @@
                 console.log('error block stripe payment', error)
             })
         }
-
     </script>
-
 
     <script>
         function peepsmember() {
-
             //commont type
             let paymenttype = localStorage.getItem('paymentType')
             let regemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            // let letters = /^[A-Za-z]+$/;
             let fname = document.getElementById('fname').value
             let lname = document.getElementById('lname').value
             let addressone = document.getElementById('addressone').value
@@ -609,25 +591,20 @@
                     axios.post('http://localhost:3000/users/saveuser', objdata).then((response) => {
                         if (response) {
                             console.log(response.data)
-                            swal(response.data.message);
+                            swal({ title: `${response.data.message}`, icon: "warning" });
                             if (response.data.status) {
                                 localStorage.removeItem("paymentType");
                             }
                         } else {
-                            swal({
-                                title: "Something went wrong,Please try again!",
-                                icon: "warning"
-                            });
+                            swal({ title: "Something went wrong,Please try again!", icon: "warning" });
                         }
                     }).catch((error) => {
                         console.log(error)
                     })
                 }
                 else if (paymenttype == 'paypal') {
-
                     let subsid = localStorage.getItem("paypalsubId")
                     let subsstatus = localStorage.getItem("paypalstatus")
-
                     let objdata = {
                         "fName": fname,
                         "lName": lname,
@@ -646,33 +623,19 @@
                     axios.post('http://localhost:3000/users/saveuser', objdata).then((response) => {
                         if (response) {
                             console.log(response.data)
-                            swal({
-                                title: "You are peeps member now.",
-                                icon: "success"
-                            });
+                            swal({ title: "You are peeps member now.", icon: "success" });
                             localStorage.removeItem("paymentType");
                         } else {
-                            swal({
-                                title: "Something went wrong,Please try again!",
-                                icon: "warning"
-                            });
+                            swal({ title: "Something went wrong,Please try again!", icon: "warning" });
                         }
                     }).catch((error) => {
                         console.log(error)
                     })
-
                 }
-
                 else {
-                    swal({
-                        title: "Please do the payment!",
-                        icon: "warning"
-                    });
+                    swal({ title: "Please complete your payment!", icon: "warning" });
                 }
-
-
             }
-
         }
     </script>
 </body>
