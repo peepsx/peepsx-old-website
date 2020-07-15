@@ -8328,8 +8328,6 @@ form {
   button {
     float: left;
     display: block;
-    background-image: linear-gradient(-180deg, #F8B563 0%, #F99A52 100%);
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.10), inset 0 -1px 0 0 #E57C45;
     color: white;
     border-radius: 24px;
     border: 0;
@@ -8342,9 +8340,7 @@ form {
     outline: none;
   }
   
-  button:focus {
-    background: #EF8C41;
-  }
+  
   
   button:active {
     background: #E17422;
@@ -8391,4 +8387,15 @@ form {
     height: 100%;
     width: 100%;
     z-index: 9999999;
+}
+.modal-header .close {
+    margin: 0;
+    background-color: #0070ba;
+    background-image: none;
+    opacity: 1;
+    text-shadow: none;
+    color: #fff;
+}
+.swal-button{
+    line-height: 30px;
 }
