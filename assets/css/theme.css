@@ -8399,3 +8399,17 @@ form {
 .swal-button{
     line-height: 30px;
 }
+
+/* email template */
+.emai-logo img {
+    max-width: 150px;
+}
+.email-content h1 {
+    text-align: center;
+}
+.email-content {
+    padding: 50px;
+}
+.bold-para {
+    font-weight: 600 !important;
+}
