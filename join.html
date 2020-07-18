@@ -367,7 +367,7 @@
                 });
             },
             onCancel: function (data) {
-                swal("The user has cancelled the payment.");
+                swal({title:"User has cancelled the payment.",icon:'warning'});
                 document.getElementById("loading").style.display = "none";
 
             },
